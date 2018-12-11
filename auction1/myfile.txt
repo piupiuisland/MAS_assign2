@@ -1,0 +1,307 @@
+NUMBER_ITEMS: 2	NUMBER_SELLERS: 3	NUMBER_BUYERS: 4	Penalty factor: 0.08	SMAX: 100	
+Bid decrease factor for each buyer: 0.09	0.09	0.09	0.09	
+
+Bid increase factor for each buyer: 1.01	1.01	1.01	1.01	
+
+In each round, seller 0 will sell item: 1
+In each round, seller 1 will sell item: 1
+In each round, seller 2 will sell item: 0
+
+-------------------------------------------------------------------- 
+Pure auctions: 
+The bidding factors:
+
+Buyer 0 : 1.1	1.1	1.1	
+
+Buyer 1 : 1.1	1.1	1.1	
+
+Buyer 2 : 1.1	1.1	1.1	
+
+Buyer 3 : 1.1	1.1	1.1	
+
+Round 0
+The starting price setted by each seller: 
+seller: 0	65
+seller: 1	74
+seller: 2	72
+
+The order of the seller in this round is: 0	2	1	
+
+The bid: 
+Buyer 0 : 71.5	81.4	79.2	
+Buyer 1 : 71.5	81.4	79.2	
+Buyer 2 : 71.5	81.4	79.2	
+Buyer 3 : 71.5	81.4	79.2	
+
+The bidding factors after updated: 
+Buyer 0 : 0.099	0.099	0.099	
+
+
+Buyer 1 : 0.099	0.099	0.099	
+
+
+Buyer 2 : 0.099	0.099	0.099	
+
+
+Buyer 3 : 0.099	0.099	0.099	
+
+
+-------------------------------------------------------------------- 
+Round 1
+The starting price setted by each seller: 
+seller: 0	65
+seller: 1	74
+seller: 2	72
+
+The order of the seller in this round is: 0	2	1	
+
+The bid: 
+Buyer 0 : 6.435	7.326	7.128	
+Buyer 1 : 6.435	7.326	7.128	
+Buyer 2 : 6.435	7.326	7.128	
+Buyer 3 : 6.435	7.326	7.128	
+
+The bidding factors after updated: 
+Buyer 0 : 0.00891	0.00891	0.00891	
+
+
+Buyer 1 : 0.00891	0.00891	0.00891	
+
+
+Buyer 2 : 0.00891	0.00891	0.00891	
+
+
+Buyer 3 : 0.00891	0.00891	0.00891	
+
+
+-------------------------------------------------------------------- 
+Round 2
+The starting price setted by each seller: 
+seller: 0	65
+seller: 1	74
+seller: 2	72
+
+The order of the seller in this round is: 0	2	1	
+
+The bid: 
+Buyer 0 : 0.57915	0.65934	0.64152	
+Buyer 1 : 0.57915	0.65934	0.64152	
+Buyer 2 : 0.57915	0.65934	0.64152	
+Buyer 3 : 0.57915	0.65934	0.64152	
+
+The bidding factors after updated: 
+Buyer 0 : 0.0008019	0.0008019	0.0008019	
+
+
+Buyer 1 : 0.0008019	0.0008019	0.0008019	
+
+
+Buyer 2 : 0.0008019	0.0008019	0.0008019	
+
+
+Buyer 3 : 0.0008019	0.0008019	0.0008019	
+
+
+-------------------------------------------------------------------- 
+Round 3
+The starting price setted by each seller: 
+seller: 0	65
+seller: 1	74
+seller: 2	72
+
+The order of the seller in this round is: 0	2	1	
+
+The bid: 
+Buyer 0 : 0.0521235	0.0593406	0.0577368	
+Buyer 1 : 0.0521235	0.0593406	0.0577368	
+Buyer 2 : 0.0521235	0.0593406	0.0577368	
+Buyer 3 : 0.0521235	0.0593406	0.0577368	
+
+The bidding factors after updated: 
+Buyer 0 : 7.2171e-05	7.2171e-05	7.2171e-05	
+
+
+Buyer 1 : 7.2171e-05	7.2171e-05	7.2171e-05	
+
+
+Buyer 2 : 7.2171e-05	7.2171e-05	7.2171e-05	
+
+
+Buyer 3 : 7.2171e-05	7.2171e-05	7.2171e-05	
+
+
+-------------------------------------------------------------------- 
+Round 4
+The starting price setted by each seller: 
+seller: 0	65
+seller: 1	74
+seller: 2	72
+
+The order of the seller in this round is: 0	2	1	
+
+The bid: 
+Buyer 0 : 0.00469111	0.00534065	0.00519631	
+Buyer 1 : 0.00469111	0.00534065	0.00519631	
+Buyer 2 : 0.00469111	0.00534065	0.00519631	
+Buyer 3 : 0.00469111	0.00534065	0.00519631	
+
+The bidding factors after updated: 
+Buyer 0 : 6.49539e-06	6.49539e-06	6.49539e-06	
+
+
+Buyer 1 : 6.49539e-06	6.49539e-06	6.49539e-06	
+
+
+Buyer 2 : 6.49539e-06	6.49539e-06	6.49539e-06	
+
+
+Buyer 3 : 6.49539e-06	6.49539e-06	6.49539e-06	
+
+
+-------------------------------------------------------------------- 
+Leveled commitment auctions: 
+The bidding factors:
+
+Buyer 0 : 1.1	1.1	1.1	
+
+Buyer 1 : 1.1	1.1	1.1	
+
+Buyer 2 : 1.1	1.1	1.1	
+
+Buyer 3 : 1.1	1.1	1.1	
+
+The starting price setted by each seller: 
+seller: 0	65
+seller: 1	74
+seller: 2	72
+
+The order of the seller in this round is: 0	2	1	
+
+The bid: 
+Buyer 0 : 71.5	81.4	79.2	
+Buyer 1 : 71.5	81.4	79.2	
+Buyer 2 : 71.5	81.4	79.2	
+Buyer 3 : 71.5	81.4	79.2	
+
+The bidding factors after updated: 
+Buyer 0 : 0.099	0.099	0.099	
+
+
+Buyer 1 : 0.099	0.099	0.099	
+
+
+Buyer 2 : 0.099	0.099	0.099	
+
+
+Buyer 3 : 0.099	0.099	0.099	
+
+
+-------------------------------------------------------------------- 
+The starting price setted by each seller: 
+seller: 0	65
+seller: 1	74
+seller: 2	72
+
+The order of the seller in this round is: 0	2	1	
+
+The bid: 
+Buyer 0 : 6.435	7.326	7.128	
+Buyer 1 : 6.435	7.326	7.128	
+Buyer 2 : 6.435	7.326	7.128	
+Buyer 3 : 6.435	7.326	7.128	
+
+The bidding factors after updated: 
+Buyer 0 : 0.00891	0.00891	0.00891	
+
+
+Buyer 1 : 0.00891	0.00891	0.00891	
+
+
+Buyer 2 : 0.00891	0.00891	0.00891	
+
+
+Buyer 3 : 0.00891	0.00891	0.00891	
+
+
+-------------------------------------------------------------------- 
+The starting price setted by each seller: 
+seller: 0	65
+seller: 1	74
+seller: 2	72
+
+The order of the seller in this round is: 0	2	1	
+
+The bid: 
+Buyer 0 : 0.57915	0.65934	0.64152	
+Buyer 1 : 0.57915	0.65934	0.64152	
+Buyer 2 : 0.57915	0.65934	0.64152	
+Buyer 3 : 0.57915	0.65934	0.64152	
+
+The bidding factors after updated: 
+Buyer 0 : 0.0008019	0.0008019	0.0008019	
+
+
+Buyer 1 : 0.0008019	0.0008019	0.0008019	
+
+
+Buyer 2 : 0.0008019	0.0008019	0.0008019	
+
+
+Buyer 3 : 0.0008019	0.0008019	0.0008019	
+
+
+-------------------------------------------------------------------- 
+The starting price setted by each seller: 
+seller: 0	65
+seller: 1	74
+seller: 2	72
+
+The order of the seller in this round is: 0	2	1	
+
+The bid: 
+Buyer 0 : 0.0521235	0.0593406	0.0577368	
+Buyer 1 : 0.0521235	0.0593406	0.0577368	
+Buyer 2 : 0.0521235	0.0593406	0.0577368	
+Buyer 3 : 0.0521235	0.0593406	0.0577368	
+
+The bidding factors after updated: 
+Buyer 0 : 7.2171e-05	7.2171e-05	7.2171e-05	
+
+
+Buyer 1 : 7.2171e-05	7.2171e-05	7.2171e-05	
+
+
+Buyer 2 : 7.2171e-05	7.2171e-05	7.2171e-05	
+
+
+Buyer 3 : 7.2171e-05	7.2171e-05	7.2171e-05	
+
+
+-------------------------------------------------------------------- 
+The starting price setted by each seller: 
+seller: 0	65
+seller: 1	74
+seller: 2	72
+
+The order of the seller in this round is: 0	2	1	
+
+The bid: 
+Buyer 0 : 0.00469111	0.00534065	0.00519631	
+Buyer 1 : 0.00469111	0.00534065	0.00519631	
+Buyer 2 : 0.00469111	0.00534065	0.00519631	
+Buyer 3 : 0.00469111	0.00534065	0.00519631	
+
+The bidding factors after updated: 
+Buyer 0 : 6.49539e-06	6.49539e-06	6.49539e-06	
+
+
+Buyer 1 : 6.49539e-06	6.49539e-06	6.49539e-06	
+
+
+Buyer 2 : 6.49539e-06	6.49539e-06	6.49539e-06	
+
+
+Buyer 3 : 6.49539e-06	6.49539e-06	6.49539e-06	
+
+
+-------------------------------------------------------------------- 
