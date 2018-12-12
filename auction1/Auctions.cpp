@@ -113,7 +113,7 @@ void Auction::pureAuction(std::ofstream &outputfile, int *order)
 	int thisAuction;
 	for (int k = 0; k < NUMBER_SELLERS; k++) { 
 		thisAuction = order[k];
-
+		sum = 0.;
 		for (int n = 0; n < NUMBER_BUYERS; n++) 
 			sum += buyers[n].bid[thisAuction];
 
@@ -252,19 +252,19 @@ void Auction::outputAfterSimulation(std::ofstream & outputfile, int *order)
 		outputfile << marketPrice[thisAuction] << "	";
 	}
 
-	outputfile << std::endl << "Winner buyers: " <<"	";
+	outputfile << std::endl << "Winbuyers: " <<"	";
 	for (int k = 0; k < NUMBER_SELLERS; k++) {
 		thisAuction = order[k];
 		outputfile << winBuyer[thisAuction] << "	";
 	}
 
-	outputfile << std::endl << "Winner buyers' bid: " << "	";
+	outputfile << std::endl << "Winbuyers' bid: " << "	";
 	for (int k = 0; k < NUMBER_SELLERS; k++) {
 		thisAuction = order[k];
 		outputfile << winBuyerBid[thisAuction] << "	";
 	}
 
-	outputfile << std::endl << "Winner buyers' profits: " << "	";
+	outputfile << std::endl << "Winbuyers' profits: " << "	";
 	for (int k = 0; k < NUMBER_SELLERS; k++) {
 		thisAuction = order[k];
 		outputfile << buyers[winBuyer[thisAuction]].getProfit() << "	";
@@ -331,6 +331,7 @@ void Auction::getWinner(int k, int *order, bool pure)
 					}
 				}
 			}
+			winPrevious = false;
 		}
 	}
 	else {
