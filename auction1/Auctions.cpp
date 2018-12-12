@@ -330,9 +330,11 @@ void Auction::getWinner(int k, int *order, bool pure)
 						winBuyerBid[thisAuction] = secondPrice;
 					}
 				}
+
 			}
 			winPrevious = false;
 		}
+		if (winBuyerBid[thisAuction] == 0) winBuyerBid[thisAuction] = firstPrice;
 	}
 	else {
 		for (int n = 0; n < NUMBER_BUYERS; n++) {
