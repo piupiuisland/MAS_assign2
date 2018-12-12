@@ -7,64 +7,69 @@ Auction::Auction()
 
 	// initial the decrease factors and increase factors for each buyer
 	initFactors(); 
+
+	// initial "winBuyer" array
+	for (int k = 0; k < NUMBER_SELLERS; k++)
+		winBuyer[k] = std::numeric_limits<int>::max();
 }
-
-void Auction::auctionSimulation()
-{
-	int order[NUMBER_SELLERS]; // the sellers' order in each round
-	std::ofstream outputfile;
-
-	outputfile.open("myfile.txt"); 
-	if (outputfile.fail()) {   
-		perror("myfile.txt"); 
-	}
-
-	// output basic information
-	outputBeforeSimulation(outputfile);
-
-	// Randomly assign items and starting prices in every round for every seller
-	assignItem(outputfile);
-
-	outputfile << "**************************** Pure Auctions ****************************" << std::endl;
-
-	// initial the bidding factors for each buyer purchasing related item from each seller
-	initBiddingFactors(outputfile);
-	
-	// each seller sets a starting price for their items
-	setStartingPrice(outputfile);
-
-	//pure auction
-	for (int r = 0; r < NUMBER_ROUND; r++) {
-		outputfile << "----------------------- Round " << r << " -----------------------" << std::endl;
-		
-		setOrder(outputfile, order); // !!!!!!!!!!!!!!!!!!!!!!!!in everyloop the order will not change!!
-		updateBid(outputfile,order);
-
-		// Calculate the "pure" auctions
-		pureAuction(outputfile, order);
-
-		// update bidding factors after each round
-		updateBiddingFactor(outputfile, order);
-	}
-
-	outputfile << "**************************** Leveled Commitment Auctions ****************************" << std::endl;
-	/////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	
-	initBiddingFactors(outputfile);
-
-	// LC auction
-	for (int r = 0; r < NUMBER_ROUND; r++) {
-		outputfile << "----------------------- Round " << r << " -----------------------" << std::endl;
-
-		setOrder(outputfile, order);
-		updateBid(outputfile, order);
-
-		LCAuction(outputfile, order);
-
-		updateBiddingFactor(outputfile, order);
-	}
-	outputfile.close();
-}
+//
+//void Auction::auctionSimulation()
+//{
+//	int order[NUMBER_SELLERS]; // the sellers' order in each round
+//	std::ofstream outputfile;
+//
+//	outputfile.open("myfile.txt"); 
+//	if (outputfile.fail()) {   
+//		perror("myfile.txt"); 
+//	}
+//
+//	// output basic information
+//	outputBeforeSimulation(outputfile);
+//
+//	// Randomly assign items and starting prices in every round for every seller
+//	assignItem(outputfile);
+//
+//	outputfile << "**************************** Pure Auctions ****************************" << std::endl;
+//
+//	// initial the bidding factors for each buyer purchasing related item from each seller
+//	initBiddingFactors(outputfile);
+//	
+//	// each seller sets a starting price for their items
+//	setStartingPrice(outputfile);
+//
+//	//pure auction
+//	for (int r = 0; r < NUMBER_ROUND; r++) {
+//		outputfile << "----------------------- Round " << r << " -----------------------" << std::endl;
+//		
+//		setOrder(outputfile, order); // !!!!!!!!!!!!!!!!!!!!!!!!in everyloop the order will not change!!
+//		updateBid(outputfile,order);
+//
+//		// Calculate the "pure" auctions
+//		pureAuction(outputfile, order, r);
+//
+//		// update bidding factors after each round
+//		updateBiddingFactor(outputfile, order, r);
+//	}
+//
+//	outputfile << "**************************** Leveled Commitment Auctions ****************************" << std::endl;
+//	
+//	// initial all the values
+//	initialValues();
+//	
+//	initBiddingFactors(outputfile);
+//	// LC auction
+//	for (int r = 0; r < NUMBER_ROUND; r++) {
+//		outputfile << "----------------------- Round " << r << " -----------------------" << std::endl;
+//
+//		setOrder(outputfile, order);
+//		updateBid(outputfile, order);
+//
+//		LCAuction(outputfile, order, r);
+//
+//		updateBiddingFactor(outputfile, order, r);
+//	}
+//	outputfile.close();
+//}
 
 void Auction::assignItem(std::ofstream &outputfile)
 {
@@ -101,13 +106,13 @@ void Auction::setOrder(std::ofstream &outputfile, int *order)
 	for (int i = 0; i < NUMBER_SELLERS; ++i) myvector.push_back(i); 
 	random_shuffle(myvector.begin(), myvector.end());
 	for (int i = 0; i < NUMBER_SELLERS; ++i) order[i] = myvector[i];
-	outputfile << "The order of the seller in this round is: ";
+	outputfile << "The order of the seller in this round is:	";
 	for (int i = 0; i < NUMBER_SELLERS; ++i) outputfile << order[i] << "	";
 	outputfile << std::endl << std::endl;
 
 }
 
-void Auction::pureAuction(std::ofstream &outputfile, int *order)
+void Auction::pureAuction(std::ofstream &outputfile, int *order, int round)
 {
 	double sum = 0;
 	int thisAuction;
@@ -123,7 +128,7 @@ void Auction::pureAuction(std::ofstream &outputfile, int *order)
 
 		// calculate market price and winner buyer
 		marketPrice[thisAuction] = sum / double(NUMBER_BUYERS-k);
-		getWinner(k, order, true); // assign winner's serial No. and his bid
+		getWinner(k, order, true,round); // assign winner's serial No. and his bid
 		
 		// update the seller's and winner buyer's profits
 		sellers[thisAuction].setProfit(marketPrice[thisAuction]);
@@ -133,31 +138,34 @@ void Auction::pureAuction(std::ofstream &outputfile, int *order)
 	outputAfterSimulation(outputfile,order);
 }
 
-void Auction::LCAuction(std::ofstream &outputfile, int *order)
+void Auction::LCAuction(std::ofstream &outputfile, int *order, int round)
 {
-	double sum = 0;
+	double sum;
 	int thisAuction;
 	for (int k = 0; k < NUMBER_SELLERS; k++) {
 		thisAuction = order[k];
-
+		sum = 0.;
 		// get the sum of all the buyers' bid depending whether this buyer has won before
 		for (int n = 0; n < NUMBER_BUYERS; n++) {
-			if (winBefore(n)) sum += maxBid(n, thisAuction);
+			if (winBefore(n, round, thisAuction)) {
+				sum += maxBid(n, thisAuction, round);
+				buyers[n].bid[thisAuction] = maxBid(n, thisAuction, round);
+			}
 			else sum += buyers[n].bid[thisAuction];
 		}
 
 		marketPrice[thisAuction] = sum / double(NUMBER_BUYERS);
-		getWinner(k,order, false); // assign winner's serial No. and his bid
+		getWinner(k,order, false, round); // assign winner's serial No. and his bid
 		
 		// update the seller's profit in this auction
 		sellers[thisAuction].setProfit(marketPrice[thisAuction]);
 		
 		// if the winner has win in previous auctions, the he need to pay the penalty
 		int previousAuction;
-		if (winBefore(winBuyer[thisAuction])) {
+		if (winBefore(winBuyer[thisAuction], round,thisAuction)) {
 			for (int kk = 0; kk < NUMBER_SELLERS; kk++) {
-				if (buyers[winBuyer[thisAuction]].win[kk] == true) previousAuction = kk;
-				buyers[winBuyer[thisAuction]].win[kk] = false;
+				if (buyers[winBuyer[thisAuction]].win[round][kk] == true) previousAuction = kk;
+				buyers[winBuyer[thisAuction]].win[round][kk] = false;
 			}
 			// change seller's profit in the previous auction
 			sellers[previousAuction].setProfit(-marketPrice[previousAuction]+ EPSILON* winBuyerBid[previousAuction]);
@@ -169,6 +177,7 @@ void Auction::LCAuction(std::ofstream &outputfile, int *order)
 				- EPSILON * winBuyerBid[previousAuction]);
 		}
 		else buyers[winBuyer[thisAuction]].setProfit(marketPrice[thisAuction] - winBuyerBid[thisAuction]);
+		std::cout << buyers[winBuyer[thisAuction]].getProfit() << std::endl;
 	}
 	outputAfterSimulation(outputfile, order);
 }
@@ -189,7 +198,7 @@ void Auction::initBiddingFactors(std::ofstream &outputfile)
 	
 	outputfile << std::endl;
 	for (int n = 0; n < NUMBER_BUYERS; n++) {
-		outputfile << "Buyer" << n << ": ";
+		outputfile << "Buyer" << n << ":	";
 		for (int k = 0; k < NUMBER_SELLERS; k++) {
 			scope = (SMAX - this->sellers[k].item.getStartingPrice());
 			this->buyers[n].biddingFactor[k] = double(RAND_MAX)/(rand()+1); // random factors larger than one
@@ -200,7 +209,7 @@ void Auction::initBiddingFactors(std::ofstream &outputfile)
 	outputfile << std::endl;
 }
 
-void Auction::updateBiddingFactor(std::ofstream &outputfile, int *order)
+void Auction::updateBiddingFactor(std::ofstream &outputfile, int *order, int round)
 {
 	int thisAuction;
 	outputfile << "The bidding factors after updated:" << std::endl;
@@ -208,7 +217,7 @@ void Auction::updateBiddingFactor(std::ofstream &outputfile, int *order)
 		outputfile << "Buyer" << n << ":	";
 		for (int k = 0; k < NUMBER_SELLERS; k++) {
 			thisAuction = order[k];
-			if (buyers[n].win[thisAuction] == true) {
+			if (buyers[n].win[round][thisAuction] == true) {
 				buyers[n].biddingFactor[thisAuction] *= buyers[n].decreaseFactor;
 			}
 			else {
@@ -219,6 +228,11 @@ void Auction::updateBiddingFactor(std::ofstream &outputfile, int *order)
 		outputfile << std::endl;
 	}
 	outputfile << std::endl;
+
+	
+
+
+
 }
 
 void Auction::outputBeforeSimulation(std::ofstream &outputfile)
@@ -245,6 +259,7 @@ void Auction::outputBeforeSimulation(std::ofstream &outputfile)
 void Auction::outputAfterSimulation(std::ofstream & outputfile, int *order)
 {
 	int thisAuction;
+	outputBid(outputfile, order);
 
 	outputfile << std::endl << "Market prices: " << "	";
 	for (int k = 0; k < NUMBER_SELLERS; k++) {
@@ -282,7 +297,7 @@ void Auction::outputAfterSimulation(std::ofstream & outputfile, int *order)
 void Auction::updateBid(std::ofstream &outputfile, int *order)
 {
 	int thisAuction;
-	outputfile << "The biding factors: " << std::endl;
+	outputfile << "The biding factors:	" << std::endl;
 	for (int n = 0; n < NUMBER_BUYERS; n++) {
 		outputfile << "Buyer" << n << ":	";
 		for (int k = 0; k < NUMBER_SELLERS; k++) {
@@ -293,20 +308,33 @@ void Auction::updateBid(std::ofstream &outputfile, int *order)
 	}
 	outputfile << std::endl;
 
+	for (int n = 0; n < NUMBER_BUYERS; n++) {
+		for (int k = 0; k < NUMBER_SELLERS; k++) {
+			thisAuction = order[k];
+			buyers[n].bid[thisAuction] = buyers[n].biddingFactor[thisAuction] * sellers[thisAuction].item.getStartingPrice();
+		}
+	}
+}
+
+void Auction::outputBid(std::ofstream & outputfile, int * order)
+{
+	int thisAuction;
 	outputfile << "The bids: " << std::endl;
 	for (int n = 0; n < NUMBER_BUYERS; n++) {
 		outputfile << "Buyer" << n << ":	";
 		for (int k = 0; k < NUMBER_SELLERS; k++) {
 			thisAuction = order[k];
-			buyers[n].bid[thisAuction] = buyers[n].biddingFactor[thisAuction] * sellers[thisAuction].item.getStartingPrice();
 			outputfile << buyers[n].bid[thisAuction] << "	";
 		}
 		outputfile << std::endl;
 	}
 	outputfile << std::endl;
+
+
 }
 
-void Auction::getWinner(int k, int *order, bool pure)
+
+void Auction::getWinner(int k, int *order, bool pure, int round)
 {
 	double firstPrice = 0., secondPrice = 0.;
 	int thisAuction = order[k];
@@ -353,14 +381,14 @@ void Auction::getWinner(int k, int *order, bool pure)
 		}
 	}
 
-	buyers[winBuyer[thisAuction]].win[thisAuction] = true; // update the "win" variable
+	buyers[winBuyer[thisAuction]].win[round][thisAuction] = true; // update the "win" variable
 }
 
-double Auction::maxBid(int n, int k)
+double Auction::maxBid(int n, int k, int round)
 {
 	int winSerial;
 	for (int k = 0; k < NUMBER_SELLERS; k++) {
-		if (buyers[n].win[k] == true) {
+		if (buyers[n].win[round][k] == true) {
 			winSerial = k;
 		}
 	}
@@ -372,14 +400,35 @@ double Auction::maxBid(int n, int k)
 	else return max;
 }
 
-bool Auction::winBefore(int n) // if buyer "n" has won in previous auctions
+bool Auction::winBefore(int n, int round, int thisAuction) // if buyer "n" has won in previous auctions
 {
 	bool buyerWin = false;
 	for (int k = 0; k < NUMBER_SELLERS; k++)
-		if (buyers[n].win[k] == true) buyerWin = true;
+		if (k != thisAuction)
+			if (buyers[n].win[round][k] == true) buyerWin = true;
 	if (buyerWin) return true;
 	else return false;
 }
+
+//void Auction::initialValues()
+//{
+//	for (int n = 0; n < NUMBER_BUYERS; n++) {
+//		buyers[n].setProfit(0.);
+//		for (int r = 0; r < NUMBER_ROUND; r++) {
+//			for (int k = 0; k < NUMBER_SELLERS; k++) {
+//				buyers[n].win[r][k] = false;
+//			}
+//		}
+//	}
+//	for (int k = 0; k < NUMBER_SELLERS; k++) {
+//		sellers[k].setProfit(0.);
+//		winBuyer[k] = 0;
+//		winBuyerBid[k] = 0.;
+//		marketPrice[k] = 0.;
+//	}
+//	
+//
+//}
 
 
 void Item::setStartingPrice(double stPri)
@@ -410,8 +459,10 @@ double Seller::getProfit()
 
 Buyer::Buyer()
 {
-	for (int k = 0; k < NUMBER_SELLERS; k++) {
-		win[k] = false; // initial "lose" to every buyer
+	for (int round = 0; round < NUMBER_ROUND; round++) {
+		for (int k = 0; k < NUMBER_SELLERS; k++) {
+			win[round][k] = false; // initial "lose" to every buyer
+		}
 	}
 }
 
@@ -423,4 +474,72 @@ void Buyer::setProfit(double prof)
 double Buyer::getProfit()
 {
 	return this->profit;
+}
+
+void PureAuction::Simulation()
+{
+	int order[NUMBER_SELLERS]; // the sellers' order in each round
+	std::ofstream outputfile;
+
+	outputfile.open("PureAuction.txt");
+	if (outputfile.fail()) {
+		perror("PureAuction.txt");
+	}
+
+	// output basic information
+	Auction.outputBeforeSimulation(outputfile);
+
+	// Randomly assign items and starting prices in every round for every seller
+	Auction.assignItem(outputfile);
+
+	outputfile << "**************************** Pure Auctions ****************************" << std::endl;
+
+	// initial the bidding factors for each buyer purchasing related item from each seller
+	Auction.initBiddingFactors(outputfile);
+
+	// each seller sets a starting price for their items
+	Auction.setStartingPrice(outputfile);
+
+	for (int r = 0; r < NUMBER_ROUND; r++) {
+		outputfile << "----------------------- Round " << r << " -----------------------" << std::endl;
+
+		Auction.setOrder(outputfile, order); 
+		Auction.updateBid(outputfile, order);
+		Auction.outputBid(outputfile, order);
+
+		// Calculate the "pure" auctions
+		Auction.pureAuction(outputfile, order, r);
+
+		// update bidding factors after each round
+		Auction.updateBiddingFactor(outputfile, order, r);
+	}
+	outputfile.close();
+}
+
+void LCAuction::Simulation()
+{
+	int order[NUMBER_SELLERS]; 
+	std::ofstream outputfile;
+
+	outputfile.open("LCAuction.txt");
+	if (outputfile.fail()) {
+		perror("LCAuction.txt");
+	}
+
+	Auction.outputBeforeSimulation(outputfile);
+	Auction.assignItem(outputfile);
+
+	outputfile << "**************************** Leveled Commitment Auctions ****************************" << std::endl;
+	
+	Auction.initBiddingFactors(outputfile);
+	Auction.setStartingPrice(outputfile);
+	for (int r = 0; r < NUMBER_ROUND; r++) {
+		outputfile << "----------------------- Round " << r << " -----------------------" << std::endl;
+
+		Auction.setOrder(outputfile, order);
+		Auction.updateBid(outputfile, order);
+		Auction.LCAuction(outputfile, order, r);
+		Auction.updateBiddingFactor(outputfile, order, r);
+	}
+	outputfile.close();
 }

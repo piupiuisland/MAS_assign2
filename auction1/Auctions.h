@@ -37,7 +37,7 @@ public:
 	double increaseFactor;
 	double bid[NUMBER_SELLERS]; // Bid of each buyer for sellers' item in a single round
 	double biddingFactor[NUMBER_SELLERS]; // a unique bidding factor of this buyer puchasing the related item from each seller
-	bool win[NUMBER_SELLERS]; // whether this buyer wins or not in a single round
+	bool win[NUMBER_ROUND][NUMBER_SELLERS]; // whether this buyer wins or not in all rounds
 	
 private:
 	double profit = 0.;
@@ -61,26 +61,24 @@ class Auction
 {
 public:
 	Auction();
-	void auctionSimulation();
-public:
 
-private:
 	void assignItem(std::ofstream &outputfile);
 	void setStartingPrice(std::ofstream &outputfile);
 	void setOrder(std::ofstream &outputfile, int *order);
-	void pureAuction(std::ofstream &outputfile, int *order);
-	void LCAuction(std::ofstream &outputfile, int *order);
+	void pureAuction(std::ofstream &outputfile, int *order, int round);
+	void LCAuction(std::ofstream &outputfile, int *order, int round);
 	void initFactors();
 	void initBiddingFactors(std::ofstream &outputfile);
-	void updateBiddingFactor(std::ofstream &outputfile, int *order);
+	void updateBiddingFactor(std::ofstream &outputfile, int *order, int round);
 	void outputBeforeSimulation(std::ofstream &outputfile);
 	void outputAfterSimulation(std::ofstream &outputfile, int *order);
 	void updateBid(std::ofstream &outputfile, int *order);
-	void getWinner(int k, int *order, bool pure);
-	double maxBid(int n, int k);
-	bool winBefore(int n);
+	void outputBid(std::ofstream &outputfile, int *order);
+	void getWinner(int k, int *order, bool pure, int round);
+	double maxBid(int n, int k, int round);
+	bool winBefore(int n, int round, int thisAuction);
 
-private:
+public:
 	std::vector <Buyer> buyers;
 	std::vector <Seller> sellers;
 	double marketPrice[NUMBER_SELLERS];
@@ -88,3 +86,16 @@ private:
 	double winBuyerBid[NUMBER_SELLERS]; // the winner's bid in each auction
 };
 
+class PureAuction {
+public:
+	void Simulation();
+private:
+	Auction Auction;
+};
+
+class LCAuction {
+public:
+	void Simulation();
+private:
+	Auction Auction;
+};

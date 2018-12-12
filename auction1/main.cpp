@@ -1,11 +1,12 @@
 #include "Auctions.h"
 
 int main() {
-	Auction auctions;
+	PureAuction PureAuction;
+	LCAuction LCAuction;
 
-	// Simulation of all the auctions
-	auctions.auctionSimulation();
+	PureAuction.Simulation();
+	LCAuction.Simulation();
 
-	system("pause");
+	//system("pause");
 	return 0;
 }
