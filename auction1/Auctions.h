@@ -72,7 +72,7 @@ private:
 	void LCAuction(std::ofstream &outputfile, int *order);
 	void initFactors();
 	void initBiddingFactors(std::ofstream &outputfile);
-	void updateBiddingFactor(std::ofstream &outputfile);
+	void updateBiddingFactor(std::ofstream &outputfile, int *order);
 	void outputBeforeSimulation(std::ofstream &outputfile);
 	void outputAfterSimulation(std::ofstream &outputfile, int *order);
 	void updateBid(std::ofstream &outputfile, int *order);

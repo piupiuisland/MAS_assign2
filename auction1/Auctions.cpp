@@ -44,7 +44,7 @@ void Auction::auctionSimulation()
 		pureAuction(outputfile, order);
 
 		// update bidding factors after each round
-		updateBiddingFactor(outputfile);
+		updateBiddingFactor(outputfile, order);
 	}
 
 	outputfile << "**************************** Leveled Commitment Auctions ****************************" << std::endl;
@@ -61,7 +61,7 @@ void Auction::auctionSimulation()
 
 		LCAuction(outputfile, order);
 
-		updateBiddingFactor(outputfile);
+		updateBiddingFactor(outputfile, order);
 	}
 	outputfile.close();
 }
@@ -200,18 +200,21 @@ void Auction::initBiddingFactors(std::ofstream &outputfile)
 	outputfile << std::endl;
 }
 
-void Auction::updateBiddingFactor(std::ofstream &outputfile)
+void Auction::updateBiddingFactor(std::ofstream &outputfile, int *order)
 {
-	outputfile << "The bidding factors after updated: " << std::endl;
+	int thisAuction;
+	outputfile << "The bidding factors after updated:" << std::endl;
 	for (int n = 0; n < NUMBER_BUYERS; n++) {
+		outputfile << "Buyer" << n << ":	";
 		for (int k = 0; k < NUMBER_SELLERS; k++) {
-			if (buyers[n].win[k] == true) {
-				buyers[n].biddingFactor[k] *= buyers[n].decreaseFactor;
+			thisAuction = order[k];
+			if (buyers[n].win[thisAuction] == true) {
+				buyers[n].biddingFactor[thisAuction] *= buyers[n].decreaseFactor;
 			}
 			else {
-				buyers[n].biddingFactor[k] *= buyers[n].increaseFactor;
+				buyers[n].biddingFactor[thisAuction] *= buyers[n].increaseFactor;
 			}
-			outputfile << this->buyers[n].biddingFactor[k] << "	";
+			outputfile << this->buyers[n].biddingFactor[thisAuction] << "	";
 		}
 		outputfile << std::endl;
 	}
@@ -279,9 +282,20 @@ void Auction::outputAfterSimulation(std::ofstream & outputfile, int *order)
 void Auction::updateBid(std::ofstream &outputfile, int *order)
 {
 	int thisAuction;
+	outputfile << "The biding factors: " << std::endl;
+	for (int n = 0; n < NUMBER_BUYERS; n++) {
+		outputfile << "Buyer" << n << ":	";
+		for (int k = 0; k < NUMBER_SELLERS; k++) {
+			thisAuction = order[k];
+			outputfile << buyers[n].biddingFactor[thisAuction] << "	";
+		}
+		outputfile << std::endl;
+	}
+	outputfile << std::endl;
+
 	outputfile << "The bids: " << std::endl;
 	for (int n = 0; n < NUMBER_BUYERS; n++) {
-		outputfile << "Buyer" << n << ": ";
+		outputfile << "Buyer" << n << ":	";
 		for (int k = 0; k < NUMBER_SELLERS; k++) {
 			thisAuction = order[k];
 			buyers[n].bid[thisAuction] = buyers[n].biddingFactor[thisAuction] * sellers[thisAuction].item.getStartingPrice();
