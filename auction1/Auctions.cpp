@@ -38,14 +38,13 @@ void Auction::auctionSimulation()
 		outputfile << "----------------------- Round " << r << " -----------------------" << std::endl;
 		
 		setOrder(outputfile, order); // !!!!!!!!!!!!!!!!!!!!!!!!in everyloop the order will not change!!
-		updateBid(outputfile);
+		updateBid(outputfile,order);
 
 		// Calculate the "pure" auctions
 		pureAuction(outputfile, order);
 
 		// update bidding factors after each round
 		updateBiddingFactor(outputfile);
-		
 	}
 
 	outputfile << "**************************** Leveled Commitment Auctions ****************************" << std::endl;
@@ -58,7 +57,7 @@ void Auction::auctionSimulation()
 		outputfile << "----------------------- Round " << r << " -----------------------" << std::endl;
 
 		setOrder(outputfile, order);
-		updateBid(outputfile);
+		updateBid(outputfile, order);
 
 		LCAuction(outputfile, order);
 
@@ -125,14 +124,13 @@ void Auction::pureAuction(std::ofstream &outputfile, int *order)
 		// calculate market price and winner buyer
 		marketPrice[thisAuction] = sum / double(NUMBER_BUYERS-k);
 		getWinner(k, order, true); // assign winner's serial No. and his bid
-		/////////////////////////////////////////!!!!!!!!!!!!!!!!!!!!!!!!!!
+		
 		// update the seller's and winner buyer's profits
 		sellers[thisAuction].setProfit(marketPrice[thisAuction]);
 		buyers[winBuyer[thisAuction]].setProfit(marketPrice[thisAuction] - winBuyerBid[thisAuction]);
 	
 	}
 	outputAfterSimulation(outputfile,order);
-
 }
 
 void Auction::LCAuction(std::ofstream &outputfile, int *order)
@@ -157,9 +155,10 @@ void Auction::LCAuction(std::ofstream &outputfile, int *order)
 		// if the winner has win in previous auctions, the he need to pay the penalty
 		int previousAuction;
 		if (winBefore(winBuyer[thisAuction])) {
-			for (int kk = 0; kk < NUMBER_SELLERS; kk++)
+			for (int kk = 0; kk < NUMBER_SELLERS; kk++) {
 				if (buyers[winBuyer[thisAuction]].win[kk] == true) previousAuction = kk;
-
+				buyers[winBuyer[thisAuction]].win[kk] = false;
+			}
 			// change seller's profit in the previous auction
 			sellers[previousAuction].setProfit(-marketPrice[previousAuction]+ EPSILON* winBuyerBid[previousAuction]);
 			
@@ -168,7 +167,6 @@ void Auction::LCAuction(std::ofstream &outputfile, int *order)
 				marketPrice[thisAuction] - winBuyerBid[thisAuction] 
 				-(marketPrice[previousAuction] - winBuyerBid[previousAuction])
 				- EPSILON * winBuyerBid[previousAuction]);
-		
 		}
 		else buyers[winBuyer[thisAuction]].setProfit(marketPrice[thisAuction] - winBuyerBid[thisAuction]);
 	}
@@ -181,7 +179,6 @@ void Auction::initFactors()
 		this->buyers[n].decreaseFactor = 0.09;
 		this->buyers[n].increaseFactor = 1.01;
 	}
-
 }
 
 void Auction::initBiddingFactors(std::ofstream &outputfile)
@@ -189,10 +186,7 @@ void Auction::initBiddingFactors(std::ofstream &outputfile)
 	double scope; 
 	//srand((unsigned)time(NULL)); // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!random should not changed each simulation
 	outputfile << "Initial bidding factors:" << std::endl;
-	//outputfile << "items sold by seller: ";
-	//for (int k = 0; k < NUMBER_SELLERS; k++) {
-	//	outputfile << "	" << k;
-	//}
+	
 	outputfile << std::endl;
 	for (int n = 0; n < NUMBER_BUYERS; n++) {
 		outputfile << "Buyer" << n << ": ";
@@ -206,7 +200,7 @@ void Auction::initBiddingFactors(std::ofstream &outputfile)
 	outputfile << std::endl;
 }
 
-void Auction::updateBiddingFactor(std::ofstream &outputfile)//////////////////!!!!!!!!!!!!!!!
+void Auction::updateBiddingFactor(std::ofstream &outputfile)
 {
 	outputfile << "The bidding factors after updated: " << std::endl;
 	for (int n = 0; n < NUMBER_BUYERS; n++) {
@@ -249,32 +243,32 @@ void Auction::outputAfterSimulation(std::ofstream & outputfile, int *order)
 {
 	int thisAuction;
 
-	outputfile << std::endl << "Market prices: ";
+	outputfile << std::endl << "Market prices: " << "	";
 	for (int k = 0; k < NUMBER_SELLERS; k++) {
 		thisAuction = order[k];
 		outputfile << marketPrice[thisAuction] << "	";
 	}
 
-	outputfile << std::endl << std::endl << "Winner buyers: ";
+	outputfile << std::endl << "Winner buyers: " <<"	";
 	for (int k = 0; k < NUMBER_SELLERS; k++) {
 		thisAuction = order[k];
 		outputfile << winBuyer[thisAuction] << "	";
 	}
 
-	outputfile << std::endl << std::endl << "Winner buyers' bid: ";
+	outputfile << std::endl << "Winner buyers' bid: " << "	";
 	for (int k = 0; k < NUMBER_SELLERS; k++) {
 		thisAuction = order[k];
 		outputfile << winBuyerBid[thisAuction] << "	";
 	}
 
-	outputfile << std::endl << std::endl << "Winner buyers' profits: ";
+	outputfile << std::endl << "Winner buyers' profits: " << "	";
 	for (int k = 0; k < NUMBER_SELLERS; k++) {
 		thisAuction = order[k];
 		outputfile << buyers[winBuyer[thisAuction]].getProfit() << "	";
 	}
-	outputfile << std::endl << "Other buyers' profits didn't change.";
+	//outputfile << std::endl << "Other buyers' profits didn't change.";
 
-	outputfile << std::endl << std::endl << "Sellers' profits: ";
+	outputfile << std::endl << "Sellers' profits: " << "	";
 	for (int k = 0; k < NUMBER_SELLERS; k++) {
 		thisAuction = order[k];
 		outputfile << sellers[thisAuction].getProfit() << "	";
@@ -282,15 +276,16 @@ void Auction::outputAfterSimulation(std::ofstream & outputfile, int *order)
 	outputfile << std::endl << std::endl;
 }
 
-void Auction::updateBid(std::ofstream &outputfile)
+void Auction::updateBid(std::ofstream &outputfile, int *order)
 {
-	outputfile << "The bid: " << std::endl;
+	int thisAuction;
+	outputfile << "The bids: " << std::endl;
 	for (int n = 0; n < NUMBER_BUYERS; n++) {
-		outputfile << "Buyer " << n << " : ";
+		outputfile << "Buyer" << n << ": ";
 		for (int k = 0; k < NUMBER_SELLERS; k++) {
-			buyers[n].bid[k] = buyers[n].biddingFactor[k] * sellers[k].item.getStartingPrice();
-			outputfile << buyers[n].bid[k] << "	";
-
+			thisAuction = order[k];
+			buyers[n].bid[thisAuction] = buyers[n].biddingFactor[thisAuction] * sellers[thisAuction].item.getStartingPrice();
+			outputfile << buyers[n].bid[thisAuction] << "	";
 		}
 		outputfile << std::endl;
 	}
@@ -350,7 +345,6 @@ double Auction::maxBid(int n, int k)
 	for (int k = 0; k < NUMBER_SELLERS; k++) {
 		if (buyers[n].win[k] == true) {
 			winSerial = k;
-			//std::cout << "In auction " << k << " buyer " << n << " win" << std::endl;
 		}
 	}
 	

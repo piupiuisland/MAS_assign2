@@ -7,9 +7,9 @@
 #include <fstream>
 #include <algorithm>
 
-#define NUMBER_ITEMS 5
-#define NUMBER_SELLERS 7
-#define NUMBER_BUYERS 10 // Attention: Number of buyers should larger than number of sellers!
+#define NUMBER_ITEMS 2
+#define NUMBER_SELLERS 3
+#define NUMBER_BUYERS 4 // Attention: Number of buyers should larger than number of sellers!
 #define NUMBER_ROUND 5
 #define EPSILON 0.08 // a penalty factor
 #define SMAX 100 // universal maximum starting price
@@ -75,7 +75,7 @@ private:
 	void updateBiddingFactor(std::ofstream &outputfile);
 	void outputBeforeSimulation(std::ofstream &outputfile);
 	void outputAfterSimulation(std::ofstream &outputfile, int *order);
-	void updateBid(std::ofstream &outputfile);
+	void updateBid(std::ofstream &outputfile, int *order);
 	void getWinner(int k, int *order, bool pure);
 	double maxBid(int n, int k);
 	bool winBefore(int n);
@@ -86,8 +86,5 @@ private:
 	double marketPrice[NUMBER_SELLERS];
 	int winBuyer[NUMBER_SELLERS];// the serial number of buyer winner in each auction
 	double winBuyerBid[NUMBER_SELLERS]; // the winner's bid in each auction
-	
-
-	
 };
 
