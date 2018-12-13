@@ -79,8 +79,8 @@ Buyer3:	209.292	4.55638	136.461
 Market prices: 	105.712	26.2502	143.728	
 Winbuyers: 	2	3	0	
 Winbuyers' bid: 	6.89051	4.55638	10.6829	
-Winbuyers' profits: 	98.8215	21.6938	133.046	
-Sellers' profits: 	105.712	26.2502	143.728	
+Winbuyers' profits: 	98.8215	58.7104	137.985	
+Sellers' profits: 	227.812	107.708	267.366	
 
 The bidding factors after updated:
 Buyer0:	2.12564	1.74364	0.0100152	
@@ -113,8 +113,8 @@ Buyer3:	211.385	137.826	0.410074
 Market prices: 	89.7315	89.9828	76.3587	
 Winbuyers: 	1	0	3	
 Winbuyers' bid: 	6.66691	0.961459	0.410074	
-Winbuyers' profits: 	83.0646	89.0214	75.9487	
-Sellers' profits: 	89.7315	89.9828	76.3587	
+Winbuyers' profits: 	131.821	227.006	134.659	
+Sellers' profits: 	317.544	357.349	184.067	
 
 The bidding factors after updated:
 Buyer0:	2.14689	0.000901368	1.76108	
@@ -147,8 +147,8 @@ Buyer3:	0.0369067	213.498	139.204
 Market prices: 	57.3882	73.6195	210.771	
 Winbuyers: 	0	2	3	
 Winbuyers' bid: 	29.8974	0.626348	139.204	
-Winbuyers' profits: 	27.4908	72.9931	71.5666	
-Sellers' profits: 	57.3882	73.6195	210.771	
+Winbuyers' profits: 	254.497	171.815	206.226	
+Sellers' profits: 	241.455	391.163	568.12	
 
 The bidding factors after updated:
 Buyer0:	0.158497	2.16836	0.000910381	
@@ -181,8 +181,8 @@ Buyer3:	12.5284	0.0372758	215.633
 Market prices: 	107.893	63.2287	68.6064	
 Winbuyers: 	3	1	2	
 Winbuyers' bid: 	0.0873966	4.12092	0.606022	
-Winbuyers' profits: 	107.806	59.1078	68.0004	
-Sellers' profits: 	107.893	63.2287	68.6064	
+Winbuyers' profits: 	314.032	190.929	239.815	
+Sellers' profits: 	676.013	304.684	459.769	
 
 The bidding factors after updated:
 Buyer0:	0.000919485	0.160082	2.19004	
