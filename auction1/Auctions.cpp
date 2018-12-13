@@ -225,7 +225,13 @@ void Auction::outputAfterSimulation(std::ofstream & outputfile, int *order)
 		outputfile << winBuyer[thisAuction] << "	";
 	}
 
-	outputfile << std::endl << "Winbuyers' bid: " << "	";
+	outputfile << std::endl << "Winbuyers' orginal bids: " << "	";
+	for (int k = 0; k < NUMBER_SELLERS; k++) {
+		thisAuction = order[k];
+		outputfile << buyers[winBuyer[thisAuction]].bid[thisAuction] << "	";
+	}
+
+	outputfile << std::endl << "Winbuyers' bids: " << "	";
 	for (int k = 0; k < NUMBER_SELLERS; k++) {
 		thisAuction = order[k];
 		outputfile << winBuyerBid[thisAuction] << "	";

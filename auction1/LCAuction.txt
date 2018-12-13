@@ -38,7 +38,8 @@ Buyer3:	45.6619	12.5532	71.5557
 
 Market prices: 	214.18	59.5727	116.955	
 Winbuyers: 	0	2	2	
-Winbuyers' bid: 	49.8357	15.3188	85.5664	
+Winbuyers' orginal bids: 	60.3249	39.7376	100.017	
+Winbuyers' bids: 	49.8357	15.3188	85.5664	
 Winbuyers' profits: 	164.345	30.1631	30.1631	
 Sellers' profits: 	214.18	1.22551	116.955	
 
@@ -66,7 +67,8 @@ Buyer3:	46.1185	12.6787	72.2712
 
 Market prices: 	211.09	59.8376	122.994	
 Winbuyers: 	2	0	0	
-Winbuyers' bid: 	46.1185	15.472	86.4221	
+Winbuyers' orginal bids: 	50.3341	34.4169	116.499	
+Winbuyers' bids: 	46.1185	15.472	86.4221	
 Winbuyers' profits: 	195.135	199.678	199.678	
 Sellers' profits: 	425.27	2.46327	239.949	
 
@@ -94,7 +96,8 @@ Buyer3:	46.5797	219.638	179.638
 
 Market prices: 	210.492	102.861	59.579	
 Winbuyers: 	3	1	1	
-Winbuyers' bid: 	40.4	52.52	12.12	
+Winbuyers' orginal bids: 	46.5797	87.2863	34.5577	
+Winbuyers' bids: 	40.4	52.52	12.12	
 Winbuyers' profits: 	170.092	43.2574	43.2574	
 Sellers' profits: 	635.762	244.15	62.0422	
 
@@ -122,7 +125,8 @@ Buyer3:	12.9336	40	73.7239
 
 Market prices: 	12.3237	211.001	57.8264	
 Winbuyers: 	2	2	2	
-Winbuyers' bid: 	12.12	40.804	52.52	
+Winbuyers' orginal bids: 	12.2412	41.0618	53.0618	
+Winbuyers' bids: 	12.12	40.804	52.52	
 Winbuyers' profits: 	196.207	196.207	196.207	
 Sellers' profits: 	63.0118	639.026	301.977	
 
@@ -150,7 +154,8 @@ Buyer3:	40.4	13.0629	95.9847
 
 Market prices: 	212.742	56.0026	106.833	
 Winbuyers: 	0	3	3	
-Winbuyers' bid: 	40.4	12.12	52.52	
+Winbuyers' orginal bids: 	41.212	13.0629	95.9847	
+Winbuyers' bids: 	40.4	12.12	52.52	
 Winbuyers' profits: 	372.021	223.435	223.435	
 Sellers' profits: 	851.769	63.9814	408.81	
 
