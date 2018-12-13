@@ -12,64 +12,6 @@ Auction::Auction()
 	for (int k = 0; k < NUMBER_SELLERS; k++)
 		winBuyer[k] = std::numeric_limits<int>::max();
 }
-//
-//void Auction::auctionSimulation()
-//{
-//	int order[NUMBER_SELLERS]; // the sellers' order in each round
-//	std::ofstream outputfile;
-//
-//	outputfile.open("myfile.txt"); 
-//	if (outputfile.fail()) {   
-//		perror("myfile.txt"); 
-//	}
-//
-//	// output basic information
-//	outputBeforeSimulation(outputfile);
-//
-//	// Randomly assign items and starting prices in every round for every seller
-//	assignItem(outputfile);
-//
-//	outputfile << "**************************** Pure Auctions ****************************" << std::endl;
-//
-//	// initial the bidding factors for each buyer purchasing related item from each seller
-//	initBiddingFactors(outputfile);
-//	
-//	// each seller sets a starting price for their items
-//	setStartingPrice(outputfile);
-//
-//	//pure auction
-//	for (int r = 0; r < NUMBER_ROUND; r++) {
-//		outputfile << "----------------------- Round " << r << " -----------------------" << std::endl;
-//		
-//		setOrder(outputfile, order); // !!!!!!!!!!!!!!!!!!!!!!!!in everyloop the order will not change!!
-//		updateBid(outputfile,order);
-//
-//		// Calculate the "pure" auctions
-//		pureAuction(outputfile, order, r);
-//
-//		// update bidding factors after each round
-//		updateBiddingFactor(outputfile, order, r);
-//	}
-//
-//	outputfile << "**************************** Leveled Commitment Auctions ****************************" << std::endl;
-//	
-//	// initial all the values
-//	initialValues();
-//	
-//	initBiddingFactors(outputfile);
-//	// LC auction
-//	for (int r = 0; r < NUMBER_ROUND; r++) {
-//		outputfile << "----------------------- Round " << r << " -----------------------" << std::endl;
-//
-//		setOrder(outputfile, order);
-//		updateBid(outputfile, order);
-//
-//		LCAuction(outputfile, order, r);
-//
-//		updateBiddingFactor(outputfile, order, r);
-//	}
-//	outputfile.close();
-//}
 
 void Auction::assignItem(std::ofstream &outputfile)
 {
@@ -227,6 +169,8 @@ void Auction::updateBiddingFactor(std::ofstream &outputfile, int *order, int rou
 			thisAuction = order[k];
 			if (buyers[n].win[round][thisAuction] == true) {
 				buyers[n].biddingFactor[thisAuction] *= buyers[n].decreaseFactor;
+				if (buyers[n].biddingFactor[thisAuction] < 1.)
+					buyers[n].biddingFactor[thisAuction] = 1.;
 			}
 			else {
 				buyers[n].biddingFactor[thisAuction] *= buyers[n].increaseFactor;
