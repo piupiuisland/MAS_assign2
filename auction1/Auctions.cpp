@@ -135,8 +135,8 @@ void Auction::LCAuction(std::ofstream &outputfile, int *order, int round)
 void Auction::initFactors()
 {
 	for (int n = 0; n < NUMBER_BUYERS; n++) {
-		this->buyers[n].decreaseFactor = 0.09;
-		this->buyers[n].increaseFactor = 1.01;
+		this->buyers[n].decreaseFactor = 0.85;
+		this->buyers[n].increaseFactor = 1.15;
 	}
 }
 

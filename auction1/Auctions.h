@@ -11,7 +11,7 @@
 #define NUMBER_SELLERS 1
 #define NUMBER_BUYERS 2 // Attention: Number of buyers should larger than number of sellers!
 #define NUMBER_ROUND 5
-#define EPSILON 0.16 // a penalty factor
+#define EPSILON 0.08 // a penalty factor
 #define SMAX 100 // universal maximum starting price
 //#define UP_BOUNDERT 3 // the up boundery of all the bidding factors
 
