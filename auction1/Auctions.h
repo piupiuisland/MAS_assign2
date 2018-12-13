@@ -95,14 +95,14 @@ public:
 
 class PureAuction {
 public:
-	void Simulation();
+	void simulation();
 private:
 	Auction Auction;
 };
 
 class LCAuction {
 public:
-	void Simulation();
+	void simulation();
 private:
 	Auction Auction;
 };

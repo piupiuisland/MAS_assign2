@@ -4,8 +4,8 @@ int main() {
 	PureAuction PureAuction;
 	LCAuction LCAuction;
 
-	PureAuction.Simulation();
-	LCAuction.Simulation();
+	PureAuction.simulation();
+	LCAuction.simulation();
 
 	//system("pause");
 	return 0;

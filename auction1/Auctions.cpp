@@ -73,7 +73,7 @@ void Auction::pureAuction(std::ofstream &outputfile, int *order, int round)
 		getWinner(k, order, true,round); // assign winner's serial No. and his bid
 		
 		// update the seller's and winner buyer's profits
-		sellers[thisAuction].setProfit(marketPrice[thisAuction]);
+		sellers[thisAuction].setProfit(winBuyerBid[thisAuction]);
 		buyers[winBuyer[thisAuction]].setProfit(marketPrice[thisAuction] - winBuyerBid[thisAuction]);
 	
 	}
@@ -98,11 +98,9 @@ void Auction::LCAuction(std::ofstream &outputfile, int *order, int round)
 
 		marketPrice[thisAuction] = sum / double(NUMBER_BUYERS);
 		getWinner(k,order, false, round); // assign winner's serial No. and his bid
-		
-
 
 		// update the seller's profit in this auction
-		sellers[thisAuction].setProfit(marketPrice[thisAuction]);
+		sellers[thisAuction].setProfit(winBuyerBid[thisAuction]);
 		//std::cout << sellers[thisAuction].getProfit() << std::endl;
 		
 		// if the winner has win in previous auctions, the he need to pay the penalty
@@ -123,7 +121,7 @@ void Auction::LCAuction(std::ofstream &outputfile, int *order, int round)
 		}
 		else {
 			buyers[winBuyer[thisAuction]].setProfit(marketPrice[thisAuction] - winBuyerBid[thisAuction]);
-			sellers[thisAuction].setPreviousProfit(marketPrice[thisAuction]);
+			sellers[thisAuction].setPreviousProfit(winBuyerBid[thisAuction]);
 			buyers[winBuyer[thisAuction]].setPreviousProfit(buyers[winBuyer[thisAuction]].getProfit());
 
 			//std::cout << buyers[winBuyer[thisAuction]].getProfit() << std::endl;
@@ -431,7 +429,7 @@ double Buyer::getPreviousProfit()
 	return this->previousProfit;
 }
 
-void PureAuction::Simulation()
+void PureAuction::simulation()
 {
 	int order[NUMBER_SELLERS]; // the sellers' order in each round
 	std::ofstream outputfile;
@@ -471,7 +469,7 @@ void PureAuction::Simulation()
 	outputfile.close();
 }
 
-void LCAuction::Simulation()
+void LCAuction::simulation()
 {
 	int order[NUMBER_SELLERS]; 
 	std::ofstream outputfile;
