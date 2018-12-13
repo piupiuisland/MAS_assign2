@@ -1,15 +1,15 @@
 NUMBER_ITEMS: 2	NUMBER_SELLERS: 1	NUMBER_BUYERS: 2	NUMBER_ROUND: 5	Penalty factor: 0.08	SMAX: 100	
 
-Bid decrease factor for each buyer: 0.85	0.85	
-Bid increase factor for each buyer: 1.15	1.15	
+Bid decrease factor for each buyer: 0.9	-6.27744e+66	
+Bid increase factor for each buyer: 1.12	-6.27744e+66	
 
 Seller 0 will sell item: 1
 
 **************************** Leveled Commitment Auctions ****************************
 Initial bidding factors:
 
-Buyer0:	2.08375	
-Buyer1:	2.85452	
+Buyer0:	10.1176	
+Buyer1:	7.65554	
 
 The starting prices: 
 seller0:	55
@@ -18,114 +18,114 @@ seller0:	55
 The order of the seller in this round is:	0	
 
 The biding factors:	
-Buyer0:	2.08375	
-Buyer1:	2.85452	
+Buyer0:	10.1176	
+Buyer1:	7.65554	
 
 The bids: 
-Buyer0:	114.606	
-Buyer1:	156.998	
+Buyer0:	556.467	
+Buyer1:	421.055	
 
 
-Market prices: 	135.802	
-Winbuyers: 	0	
-Winbuyers' orginal bids: 	114.606	
-Winbuyers' bids: 	114.606	
-Winbuyers' profits: 	21.196	
-Sellers' profits: 	135.802	
+Market prices: 	488.761	
+Winbuyers: 	1	
+Winbuyers' orginal bids: 	421.055	
+Winbuyers' bids: 	421.055	
+Winbuyers' profits: 	67.7064	
+Sellers' profits: 	488.761	
 
 The bidding factors after updated:
-Buyer0:	1.77119	
-Buyer1:	3.28269	
+Buyer0:	11.3317	
+Buyer1:	1	
 
 ----------------------- Round 1 -----------------------
 The order of the seller in this round is:	0	
 
 The biding factors:	
-Buyer0:	1.77119	
-Buyer1:	3.28269	
+Buyer0:	11.3317	
+Buyer1:	1	
 
 The bids: 
-Buyer0:	97.4154	
-Buyer1:	180.548	
+Buyer0:	623.243	
+Buyer1:	55	
 
 
-Market prices: 	138.982	
-Winbuyers: 	0	
-Winbuyers' orginal bids: 	97.4154	
-Winbuyers' bids: 	97.4154	
-Winbuyers' profits: 	62.7624	
-Sellers' profits: 	274.784	
+Market prices: 	339.122	
+Winbuyers: 	1	
+Winbuyers' orginal bids: 	55	
+Winbuyers' bids: 	55	
+Winbuyers' profits: 	351.828	
+Sellers' profits: 	827.883	
 
 The bidding factors after updated:
-Buyer0:	1.50551	
-Buyer1:	3.7751	
+Buyer0:	12.6915	
+Buyer1:	1	
 
 ----------------------- Round 2 -----------------------
 The order of the seller in this round is:	0	
 
 The biding factors:	
-Buyer0:	1.50551	
-Buyer1:	3.7751	
+Buyer0:	12.6915	
+Buyer1:	1	
 
 The bids: 
-Buyer0:	82.8031	
-Buyer1:	207.63	
+Buyer0:	698.033	
+Buyer1:	55	
 
 
-Market prices: 	145.217	
-Winbuyers: 	0	
-Winbuyers' orginal bids: 	82.8031	
-Winbuyers' bids: 	82.8031	
-Winbuyers' profits: 	125.176	
-Sellers' profits: 	420.001	
+Market prices: 	376.516	
+Winbuyers: 	1	
+Winbuyers' orginal bids: 	55	
+Winbuyers' bids: 	55	
+Winbuyers' profits: 	673.344	
+Sellers' profits: 	1204.4	
 
 The bidding factors after updated:
-Buyer0:	1.27968	
-Buyer1:	4.34136	
+Buyer0:	14.2145	
+Buyer1:	1	
 
 ----------------------- Round 3 -----------------------
 The order of the seller in this round is:	0	
 
 The biding factors:	
-Buyer0:	1.27968	
-Buyer1:	4.34136	
+Buyer0:	14.2145	
+Buyer1:	1	
 
 The bids: 
-Buyer0:	70.3826	
-Buyer1:	238.775	
+Buyer0:	781.797	
+Buyer1:	55	
 
 
-Market prices: 	154.579	
-Winbuyers: 	0	
-Winbuyers' orginal bids: 	70.3826	
-Winbuyers' bids: 	70.3826	
-Winbuyers' profits: 	209.372	
-Sellers' profits: 	574.58	
+Market prices: 	418.398	
+Winbuyers: 	1	
+Winbuyers' orginal bids: 	55	
+Winbuyers' bids: 	55	
+Winbuyers' profits: 	1036.74	
+Sellers' profits: 	1622.8	
 
 The bidding factors after updated:
-Buyer0:	1.08773	
-Buyer1:	4.99257	
+Buyer0:	15.9202	
+Buyer1:	1	
 
 ----------------------- Round 4 -----------------------
 The order of the seller in this round is:	0	
 
 The biding factors:	
-Buyer0:	1.08773	
-Buyer1:	4.99257	
+Buyer0:	15.9202	
+Buyer1:	1	
 
 The bids: 
-Buyer0:	59.8252	
-Buyer1:	274.591	
+Buyer0:	875.612	
+Buyer1:	55	
 
 
-Market prices: 	167.208	
-Winbuyers: 	0	
-Winbuyers' orginal bids: 	59.8252	
-Winbuyers' bids: 	59.8252	
-Winbuyers' profits: 	316.755	
-Sellers' profits: 	741.788	
+Market prices: 	465.306	
+Winbuyers: 	1	
+Winbuyers' orginal bids: 	55	
+Winbuyers' bids: 	55	
+Winbuyers' profits: 	1447.05	
+Sellers' profits: 	2088.1	
 
 The bidding factors after updated:
-Buyer0:	1	
-Buyer1:	5.74145	
+Buyer0:	17.8306	
+Buyer1:	1	
 

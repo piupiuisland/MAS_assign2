@@ -136,11 +136,10 @@ void Auction::initFactors()
 {
 	this->buyers[0].increaseFactor = 1.05;
 	this->buyers[0].decreaseFactor = 0.93;
-	for (int n = 0; n < NUMBER_BUYERS; n++) {
 
+	for (int n = 0; n < NUMBER_BUYERS; n++) {
 		this->buyers[n].decreaseFactor -= 0.03;
 		this->buyers[n].increaseFactor += 0.07;
-
 	}
 }
 
@@ -154,10 +153,8 @@ void Auction::initBiddingFactors(std::ofstream &outputfile)
 		outputfile << "Buyer" << n << ":	";
 		for (int k = 0; k < NUMBER_SELLERS; k++) {
 			scope = (SMAX - this->sellers[k].item.getStartingPrice());
-			this->buyers[n].biddingFactor[k] = double(RAND_MAX)/(rand()+1); // random factors larger than one
-			//while (this->buyers[n].biddingFactor[k] > UP_BOUNDERT)
-				//this->buyers[n].biddingFactor[k] = this->buyers[n].biddingFactor[k];
-
+			this->buyers[n].biddingFactor[k] = 1 + (UP_BOUNDERT - 1)*rand() / double(RAND_MAX); // random factors between (a, UP_BOUNDERT)
+			
 			outputfile << this->buyers[n].biddingFactor[k] << "	";
 		}
 		outputfile << std::endl;

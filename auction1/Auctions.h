@@ -13,7 +13,7 @@
 #define NUMBER_ROUND 5
 #define EPSILON 0.08 // a penalty factor
 #define SMAX 100 // universal maximum starting price
-//#define UP_BOUNDERT 3 // the up boundery of all the bidding factors
+#define UP_BOUNDERT 20 // the upper boundery of all the bidding factors
 
 // Single item
 class Item {
