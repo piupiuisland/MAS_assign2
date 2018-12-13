@@ -69,8 +69,9 @@ Market prices: 	577.208	171.307	678.796
 Winbuyers: 	0	2	0	
 Winbuyers' orginal bids: 	571.11	96.2051	522.248	
 Winbuyers' bids: 	75.0147	85.8241	492.11	
-Winbuyers' profits: 	308.374	209.447	308.374	
-Sellers' profits: 	-412.843	166.669	989.49	
+Winbuyers' profits: 	629.884	209.447	308.374	
+Sellers' profits: 	158.364	166.669	989.49	
+The profit of seller 0 changed to 89.3509
 
 The bidding factors after updated:
 Buyer0:	13.2783	7.50961	9.34021	
@@ -98,8 +99,9 @@ Market prices: 	664.005	778.011	260.689
 Winbuyers: 	0	2	2	
 Winbuyers' orginal bids: 	531.132	585.611	251.249	
 Winbuyers' bids: 	84.0165	485.691	239.084	
-Winbuyers' profits: 	888.362	192.196	192.196	
-Sellers' profits: 	-328.826	736.025	405.753	
+Winbuyers' profits: 	888.362	501.767	192.196	
+Sellers' profits: 	173.367	1475.18	405.753	
+The profit of seller 1 changed to 1028.35
 
 The bidding factors after updated:
 Buyer0:	12.3488	9.80722	7.88509	
@@ -127,8 +129,9 @@ Market prices: 	223.798	773.779	869.056
 Winbuyers: 	0	0	0	
 Winbuyers' orginal bids: 	94.621	493.953	509.976	
 Winbuyers' bids: 	72.8176	94.0985	509.482	
-Winbuyers' profits: 	1234.58	1234.58	1234.58	
-Sellers' profits: 	260.599	-1000.98	1245.51	
+Winbuyers' profits: 	1039.34	1039.34	1234.58	
+Sellers' profits: 	478.571	173.367	1537.83	
+The profit of seller 0 changed to 180.895
 
 The bidding factors after updated:
 Buyer0:	7.33313	11.4844	9.12072	
@@ -156,8 +159,9 @@ Market prices: 	911.749	366.814	1028.65
 Winbuyers: 	0	1	1	
 Winbuyers' orginal bids: 	459.376	299.907	1026.55	
 Winbuyers' bids: 	105.39	86.653	606.284	
-Winbuyers' profits: 	2040.94	827.834	827.834	
-Sellers' profits: 	-895.589	-12.6298	1851.79	
+Winbuyers' profits: 	2040.94	692.557	827.834	
+Sellers' profits: 	286.286	498.232	2144.11	
+The profit of seller 2 changed to 418.511
 
 The bidding factors after updated:
 Buyer0:	10.6805	7.69979	9.57675	
@@ -166,6 +170,7 @@ Buyer2:	38.7771	8.59309	13.8746
 Buyer3:	56.0321	60.855	47.0235	
 
 
-*******************************************************
-All Sellers' profits: 	-895.589	1851.79	-12.6298	
+*************************** Final Results ***************************
+
+All Sellers' profits: 	286.286	2144.11	418.511	
 All buyers' profits: 	2040.94	827.834	192.196	0	

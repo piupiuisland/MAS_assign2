@@ -108,10 +108,9 @@ void Auction::LCAuction(std::ofstream &outputfile, int *order, int round)
 		if (winBefore(winBuyer[thisAuction], round,thisAuction)) {
 			for (int kk = 0; kk < k; kk++) {
 				if (buyers[winBuyer[thisAuction]].win[round][order[kk]] == true) previousAuction = order[kk];
-				//buyers[winBuyer[thisAuction]].win[round][kk] = false;
 			}
 			// change seller's profit in the previous auction
-			sellers[previousAuction].setProfit(-marketPrice[previousAuction]+ EPSILON* winBuyerBid[previousAuction]);
+			sellers[previousAuction].setProfit(-winBuyerBid[previousAuction]+ EPSILON* winBuyerBid[previousAuction]);
 			
 			//update the winner buyer's profit
 			buyers[winBuyer[thisAuction]].setProfit(
@@ -121,7 +120,7 @@ void Auction::LCAuction(std::ofstream &outputfile, int *order, int round)
 		}
 		else {
 			buyers[winBuyer[thisAuction]].setProfit(marketPrice[thisAuction] - winBuyerBid[thisAuction]);
-			sellers[thisAuction].setPreviousProfit(winBuyerBid[thisAuction]);
+			sellers[thisAuction].setPreviousProfit(sellers[thisAuction].getProfit());
 			buyers[winBuyer[thisAuction]].setPreviousProfit(buyers[winBuyer[thisAuction]].getProfit());
 
 			//std::cout << buyers[winBuyer[thisAuction]].getProfit() << std::endl;
@@ -207,7 +206,9 @@ void Auction::outputBeforeSimulation(std::ofstream &outputfile)
 
 void Auction::outputAfterSimulation(std::ofstream & outputfile, int *order)
 {
-	int thisAuction;
+	int thisAuction, thisAuctionkk, balaba;
+	bool winAfter = false;
+	bool win_After = false;
 	outputBid(outputfile, order);
 
 	outputfile << std::endl << "Market prices: " << "	";
@@ -237,16 +238,36 @@ void Auction::outputAfterSimulation(std::ofstream & outputfile, int *order)
 	outputfile << std::endl << "Winbuyers' profits: " << "	";
 	for (int k = 0; k < NUMBER_SELLERS; k++) {
 		thisAuction = order[k];
-		outputfile << buyers[winBuyer[thisAuction]].getProfit() << "	";
+		
+		for (int kk = k + 1; kk < NUMBER_SELLERS; kk++) {
+			thisAuctionkk = order[kk];
+			if (winBuyer[thisAuction] == winBuyer[thisAuctionkk]) winAfter = true;
+		}
+		if (winAfter) outputfile << buyers[winBuyer[thisAuction]].getPreviousProfit() << "	";
+		else outputfile << buyers[winBuyer[thisAuction]].getProfit() << "	";
+		winAfter = false;
 	}
 	//outputfile << std::endl << "Other buyers' profits didn't change.";
 
 	outputfile << std::endl << "Sellers' profits: " << "	";
 	for (int k = 0; k < NUMBER_SELLERS; k++) {
 		thisAuction = order[k];
-		outputfile << sellers[thisAuction].getProfit() << "	";
-	}
 
+
+		for (int kk = k + 1; kk < NUMBER_SELLERS; kk++) {
+			thisAuctionkk = order[kk];
+			if (winBuyer[thisAuction] == winBuyer[thisAuctionkk]) winAfter = true;
+		}
+		if (winAfter) {
+			outputfile << sellers[thisAuction].getPreviousProfit() << "	";
+			balaba = thisAuction;
+			win_After = true;
+		}
+		else outputfile << sellers[thisAuction].getProfit() << "	";
+		winAfter = false;
+	}
+	if (win_After)
+		outputfile << std::endl << "The profit of seller " << balaba << " changed to " << sellers[balaba].getProfit();
 	outputfile << std::endl << std::endl;
 }
 
@@ -460,8 +481,8 @@ void PureAuction::simulation()
 		Auction.updateBiddingFactor(outputfile, order, r);
 	}
 
-	outputfile << std::endl << "*******************************************************";
-	outputfile << std::endl << "All Sellers' profits: " << "	";
+	outputfile << std::endl << "*************************** Final Results ***************************";
+	outputfile << std::endl << std::endl << "All Sellers' profits: " << "	";
 	for (int k = 0; k < NUMBER_SELLERS; k++) {
 		outputfile << Auction.sellers[k].getProfit() << "	";
 	}
@@ -470,6 +491,7 @@ void PureAuction::simulation()
 	for (int n = 0; n < NUMBER_BUYERS; n++) {
 		outputfile << Auction.buyers[n].getProfit() << "	";
 	}
+	outputfile << std::endl;
 	outputfile.close();
 }
 
@@ -499,8 +521,8 @@ void LCAuction::simulation()
 		Auction.updateBiddingFactor(outputfile, order, r);
 	}
 
-	outputfile << std::endl << "*******************************************************";
-	outputfile << std::endl << "All Sellers' profits: " << "	";
+	outputfile << std::endl << "*************************** Final Results ***************************";
+	outputfile << std::endl << std::endl << "All Sellers' profits: " << "	";
 	for (int k = 0; k < NUMBER_SELLERS; k++) {
 		outputfile << Auction.sellers[k].getProfit() << "	";
 	}
