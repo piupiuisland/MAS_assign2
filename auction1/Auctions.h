@@ -8,8 +8,8 @@
 #include <algorithm>
 
 #define NUMBER_ITEMS 2
-#define NUMBER_SELLERS 1
-#define NUMBER_BUYERS 2 // Attention: Number of buyers should larger than number of sellers!
+#define NUMBER_SELLERS 3
+#define NUMBER_BUYERS 4 // Attention: Number of buyers should larger than number of sellers!
 #define NUMBER_ROUND 5
 #define EPSILON 0.08 // a penalty factor
 #define SMAX 100 // universal maximum starting price
