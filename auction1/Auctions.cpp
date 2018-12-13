@@ -477,7 +477,7 @@ void PureAuction::Simulation()
 
 		Auction.setOrder(outputfile, order); 
 		Auction.updateBid(outputfile, order);
-		Auction.outputBid(outputfile, order);
+		//Auction.outputBid(outputfile, order);
 
 		// Calculate the "pure" auctions
 		Auction.pureAuction(outputfile, order, r);
