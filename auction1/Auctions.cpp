@@ -161,14 +161,14 @@ void Auction::LCAuction(std::ofstream &outputfile, int *order, int round)
 
 		// update the seller's profit in this auction
 		sellers[thisAuction].setProfit(marketPrice[thisAuction]);
-		std::cout << sellers[thisAuction].getProfit() << std::endl;
+		//std::cout << sellers[thisAuction].getProfit() << std::endl;
 		
 		// if the winner has win in previous auctions, the he need to pay the penalty
 		int previousAuction;
 		if (winBefore(winBuyer[thisAuction], round,thisAuction)) {
 			for (int kk = 0; kk < k; kk++) {
 				if (buyers[winBuyer[thisAuction]].win[round][order[kk]] == true) previousAuction = order[kk];
-				buyers[winBuyer[thisAuction]].win[round][kk] = false;
+				//buyers[winBuyer[thisAuction]].win[round][kk] = false;
 			}
 			// change seller's profit in the previous auction
 			sellers[previousAuction].setProfit(-marketPrice[previousAuction]+ EPSILON* winBuyerBid[previousAuction]);
@@ -181,10 +181,10 @@ void Auction::LCAuction(std::ofstream &outputfile, int *order, int round)
 		}
 		else {
 			buyers[winBuyer[thisAuction]].setProfit(marketPrice[thisAuction] - winBuyerBid[thisAuction]);
-			sellers[thisAuction].setSecondProfit(marketPrice[thisAuction]);
-			buyers[winBuyer[thisAuction]].setSecondProfit(buyers[winBuyer[thisAuction]].getProfit());
+			sellers[thisAuction].setPreviousProfit(marketPrice[thisAuction]);
+			buyers[winBuyer[thisAuction]].setPreviousProfit(buyers[winBuyer[thisAuction]].getProfit());
 
-			std::cout << buyers[winBuyer[thisAuction]].getProfit() << std::endl;
+			//std::cout << buyers[winBuyer[thisAuction]].getProfit() << std::endl;
 		}
 	}
 	outputAfterSimulation(outputfile, order);
@@ -465,14 +465,14 @@ double Seller::getProfit()
 	return this->profit;
 }
 
-void Seller::setSecondProfit(double prof)
+void Seller::setPreviousProfit(double prof)
 {
-	this->secondProfit = prof;
+	this->previousProfit = prof;
 }
 
-double Seller::getSecondProfit()
+double Seller::getPreviousProfit()
 {
-	return this->secondProfit;
+	return this->previousProfit;
 }
 
 Buyer::Buyer()
@@ -494,14 +494,14 @@ double Buyer::getProfit()
 	return this->profit;
 }
 
-void Buyer::setSecondProfit(double prof)
+void Buyer::setPreviousProfit(double prof)
 {
-	this->secondProfit = prof;
+	this->previousProfit = prof;
 }
 
-double Buyer::getSecondProfit()
+double Buyer::getPreviousProfit()
 {
-	return this->secondProfit;
+	return this->previousProfit;
 }
 
 void PureAuction::Simulation()

@@ -32,8 +32,8 @@ public:
 	Buyer();
 	void setProfit(double prof);
 	double getProfit();
-	void setSecondProfit(double prof);
-	double getSecondProfit();
+	void setPreviousProfit(double prof);
+	double getPreviousProfit();
 public:
 	double decreaseFactor;
 	double increaseFactor;
@@ -43,7 +43,7 @@ public:
 	
 private:
 	double profit = 0.;
-	double secondProfit = 0.; // The profit this buyer will get if he breaks the previous auction
+	double previousProfit = 0.; // The profit this buyer will get if he breaks the previous auction
 };
 
 // Single seller
@@ -52,14 +52,14 @@ public:
 	Seller();
 	void setProfit(double prof);
 	double getProfit();
-	void setSecondProfit(double prof);
-	double getSecondProfit();
+	void setPreviousProfit(double prof);
+	double getPreviousProfit();
 public:
 	Item item; // the item this seller will sell in every round
 	
 private:
 	double profit = 0.;
-	double secondProfit = 0.; // The profit this seller will get if his items was returned
+	double previousProfit = 0.; // The profit this seller will get if his items was returned
 };
 
 
