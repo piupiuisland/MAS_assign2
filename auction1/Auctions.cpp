@@ -143,7 +143,6 @@ void Auction::initFactors()
 void Auction::initBiddingFactors(std::ofstream &outputfile)
 {
 	double scope; 
-	//srand((unsigned)time(NULL)); // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!random should not changed each simulation
 	outputfile << "Initial bidding factors:" << std::endl;
 	
 	outputfile << std::endl;
@@ -152,6 +151,9 @@ void Auction::initBiddingFactors(std::ofstream &outputfile)
 		for (int k = 0; k < NUMBER_SELLERS; k++) {
 			scope = (SMAX - this->sellers[k].item.getStartingPrice());
 			this->buyers[n].biddingFactor[k] = double(RAND_MAX)/(rand()+1); // random factors larger than one
+			//while (this->buyers[n].biddingFactor[k] > UP_BOUNDERT)
+				//this->buyers[n].biddingFactor[k] = this->buyers[n].biddingFactor[k];
+
 			outputfile << this->buyers[n].biddingFactor[k] << "	";
 		}
 		outputfile << std::endl;
