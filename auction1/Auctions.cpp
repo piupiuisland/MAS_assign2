@@ -183,10 +183,6 @@ void Auction::updateBiddingFactor(std::ofstream &outputfile, int *order, int rou
 	}
 	outputfile << std::endl;
 
-	
-
-
-
 }
 
 void Auction::outputBeforeSimulation(std::ofstream &outputfile)
