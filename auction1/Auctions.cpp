@@ -318,11 +318,9 @@ void Auction::getWinner(int k, int *order, bool pure, int round)
 						winBuyerBid[thisAuction] = secondPrice;
 					}
 				}
-
 			}
 			winPrevious = false;
 		}
-		if (winBuyerBid[thisAuction] == 0) winBuyerBid[thisAuction] = firstPrice;
 	}
 	else {
 		for (int n = 0; n < NUMBER_BUYERS; n++) {
@@ -340,7 +338,7 @@ void Auction::getWinner(int k, int *order, bool pure, int round)
 			}
 		}
 	}
-
+	if (winBuyerBid[thisAuction] == 0) winBuyerBid[thisAuction] = firstPrice;
 	buyers[winBuyer[thisAuction]].win[round][thisAuction] = true; // update the "win" variable
 }
 
