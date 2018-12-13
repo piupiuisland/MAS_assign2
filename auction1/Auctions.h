@@ -50,7 +50,7 @@ private:
 // Single seller
 class Seller {
 public:
-	Seller();
+	
 	void setProfit(double prof);
 	double getProfit();
 	void setPreviousProfit(double prof);
