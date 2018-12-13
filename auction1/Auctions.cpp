@@ -370,26 +370,6 @@ bool Auction::winBefore(int n, int round, int thisAuction) // if buyer "n" has w
 	else return false;
 }
 
-//void Auction::initialValues()
-//{
-//	for (int n = 0; n < NUMBER_BUYERS; n++) {
-//		buyers[n].setProfit(0.);
-//		for (int r = 0; r < NUMBER_ROUND; r++) {
-//			for (int k = 0; k < NUMBER_SELLERS; k++) {
-//				buyers[n].win[r][k] = false;
-//			}
-//		}
-//	}
-//	for (int k = 0; k < NUMBER_SELLERS; k++) {
-//		sellers[k].setProfit(0.);
-//		winBuyer[k] = 0;
-//		winBuyerBid[k] = 0.;
-//		marketPrice[k] = 0.;
-//	}
-//	
-//
-//}
-
 
 void Item::setStartingPrice(double stPri)
 {

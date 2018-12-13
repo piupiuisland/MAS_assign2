@@ -1,167 +1,131 @@
-NUMBER_ITEMS: 2	NUMBER_SELLERS: 3	NUMBER_BUYERS: 4	NUMBER_ROUND: 5	Penalty factor: 0.08	SMAX: 100	
+NUMBER_ITEMS: 2	NUMBER_SELLERS: 1	NUMBER_BUYERS: 2	NUMBER_ROUND: 5	Penalty factor: 0.08	SMAX: 100	
 
-Bid decrease factor for each buyer: 0.09	0.09	0.09	0.09	
-Bid increase factor for each buyer: 1.01	1.01	1.01	1.01	
+Bid decrease factor for each buyer: 0.85	0.85	
+Bid increase factor for each buyer: 1.15	1.15	
 
 Seller 0 will sell item: 1
-Seller 1 will sell item: 1
-Seller 2 will sell item: 0
 
 **************************** Pure Auctions ****************************
 Initial bidding factors:
 
-Buyer0:	1.23644	1.70929	2.08375	
-Buyer1:	2.85452	1.11608	1.21526	
-Buyer2:	1.33934	5.74255	1.16418	
-Buyer3:	1.4074	1.94717	3.2892	
+Buyer0:	1.77426	
+Buyer1:	5.17238	
 
 The starting prices: 
-seller0:	96
-seller1:	26
-seller2:	63
+seller0:	68
 
 ----------------------- Round 0 -----------------------
-The order of the seller in this round is:	2	1	0	
+The order of the seller in this round is:	0	
 
 The biding factors:	
-Buyer0:	2.08375	1.70929	1.23644	
-Buyer1:	1.21526	1.11608	2.85452	
-Buyer2:	1.16418	5.74255	1.33934	
-Buyer3:	3.2892	1.94717	1.4074	
+Buyer0:	1.77426	
+Buyer1:	5.17238	
 
 The bids: 
-Buyer0:	131.276	44.4414	118.699	
-Buyer1:	76.5613	29.0181	274.034	
-Buyer2:	73.3433	149.306	128.577	
-Buyer3:	207.22	50.6265	135.11	
+Buyer0:	120.65	
+Buyer1:	351.722	
 
 
-Market prices: 	122.1	81.4581	123.638	
-Winbuyers: 	1	3	0	
-Winbuyers' orginal bids: 	76.5613	50.6265	118.699	
-Winbuyers' bids: 	73.3433	44.4414	118.699	
-Winbuyers' profits: 	48.7568	37.0167	4.9391	
-Sellers' profits: 	122.1	81.4581	123.638	
+Market prices: 	236.186	
+Winbuyers: 	0	
+Winbuyers' orginal bids: 	120.65	
+Winbuyers' bids: 	120.65	
+Winbuyers' profits: 	115.536	
+Sellers' profits: 	236.186	
 
 The bidding factors after updated:
-Buyer0:	2.10459	1.72638	1	
-Buyer1:	1	1.12724	2.88306	
-Buyer2:	1.17582	5.79998	1.35274	
-Buyer3:	3.32209	1	1.42147	
+Buyer0:	1.50812	
+Buyer1:	5.94823	
 
 ----------------------- Round 1 -----------------------
-The order of the seller in this round is:	2	1	0	
+The order of the seller in this round is:	0	
 
 The biding factors:	
-Buyer0:	2.10459	1.72638	1	
-Buyer1:	1	1.12724	2.88306	
-Buyer2:	1.17582	5.79998	1.35274	
-Buyer3:	3.32209	1	1.42147	
+Buyer0:	1.50812	
+Buyer1:	5.94823	
 
 The bids: 
-Buyer0:	132.589	44.8858	96	
-Buyer1:	63	29.3083	276.774	
-Buyer2:	74.0768	150.799	129.863	
-Buyer3:	209.292	26	136.461	
+Buyer0:	102.552	
+Buyer1:	404.48	
 
 
-Market prices: 	119.739	33.398	116.231	
-Winbuyers: 	2	1	0	
-Winbuyers' orginal bids: 	74.0768	29.3083	96	
-Winbuyers' bids: 	63	26	96	
-Winbuyers' profits: 	56.7394	56.1548	25.1697	
-Sellers' profits: 	241.84	114.856	239.868	
+Market prices: 	253.516	
+Winbuyers: 	0	
+Winbuyers' orginal bids: 	102.552	
+Winbuyers' bids: 	102.552	
+Winbuyers' profits: 	266.5	
+Sellers' profits: 	489.702	
 
 The bidding factors after updated:
-Buyer0:	2.12564	1.74364	1	
-Buyer1:	1.01	1	2.91189	
-Buyer2:	1	5.85798	1.36626	
-Buyer3:	3.35531	1.01	1.43568	
+Buyer0:	1.2819	
+Buyer1:	6.84047	
 
 ----------------------- Round 2 -----------------------
-The order of the seller in this round is:	2	0	1	
+The order of the seller in this round is:	0	
 
 The biding factors:	
-Buyer0:	2.12564	1	1.74364	
-Buyer1:	1.01	2.91189	1	
-Buyer2:	1	1.36626	5.85798	
-Buyer3:	3.35531	1.43568	1.01	
+Buyer0:	1.2819	
+Buyer1:	6.84047	
 
 The bids: 
-Buyer0:	133.915	96	45.3347	
-Buyer1:	63.63	279.542	26	
-Buyer2:	63	131.161	152.307	
-Buyer3:	211.385	137.826	26.26	
+Buyer0:	87.1693	
+Buyer1:	465.152	
 
 
-Market prices: 	117.982	121.662	89.2837	
-Winbuyers: 	1	0	3	
-Winbuyers' orginal bids: 	63.63	96	26.26	
-Winbuyers' bids: 	63	96	26.26	
-Winbuyers' profits: 	111.137	50.832	100.04	
-Sellers' profits: 	359.822	361.531	204.14	
+Market prices: 	276.161	
+Winbuyers: 	0	
+Winbuyers' orginal bids: 	87.1693	
+Winbuyers' bids: 	87.1693	
+Winbuyers' profits: 	455.491	
+Sellers' profits: 	765.862	
 
 The bidding factors after updated:
-Buyer0:	2.14689	1	1.76108	
-Buyer1:	1	2.94101	1.01	
-Buyer2:	1.01	1.37993	5.91656	
-Buyer3:	3.38886	1.45004	1	
+Buyer0:	1.08962	
+Buyer1:	7.86654	
 
 ----------------------- Round 3 -----------------------
-The order of the seller in this round is:	1	2	0	
+The order of the seller in this round is:	0	
 
 The biding factors:	
-Buyer0:	1.76108	2.14689	1	
-Buyer1:	1.01	1	2.94101	
-Buyer2:	5.91656	1.01	1.37993	
-Buyer3:	1	3.38886	1.45004	
+Buyer0:	1.08962	
+Buyer1:	7.86654	
 
 The bids: 
-Buyer0:	45.788	135.254	96	
-Buyer1:	26.26	63	282.337	
-Buyer2:	153.83	63.63	132.473	
-Buyer3:	26	213.498	139.204	
+Buyer0:	74.0939	
+Buyer1:	534.925	
 
 
-Market prices: 	62.9696	113.376	210.771	
-Winbuyers: 	0	2	3	
-Winbuyers' orginal bids: 	45.788	63.63	139.204	
-Winbuyers' bids: 	26.26	63	139.204	
-Winbuyers' profits: 	87.5416	107.116	171.607	
-Sellers' profits: 	267.109	473.198	572.301	
+Market prices: 	304.509	
+Winbuyers: 	0	
+Winbuyers' orginal bids: 	74.0939	
+Winbuyers' bids: 	74.0939	
+Winbuyers' profits: 	685.906	
+Sellers' profits: 	1070.37	
 
 The bidding factors after updated:
-Buyer0:	1	2.16836	1.01	
-Buyer1:	1.0201	1.01	2.97042	
-Buyer2:	5.97572	1	1.39372	
-Buyer3:	1.01	3.42275	1	
+Buyer0:	1	
+Buyer1:	9.04652	
 
 ----------------------- Round 4 -----------------------
-The order of the seller in this round is:	0	1	2	
+The order of the seller in this round is:	0	
 
 The biding factors:	
-Buyer0:	1.01	1	2.16836	
-Buyer1:	2.97042	1.0201	1.01	
-Buyer2:	1.39372	5.97572	1	
-Buyer3:	1	1.01	3.42275	
+Buyer0:	1	
+Buyer1:	9.04652	
 
 The bids: 
-Buyer0:	96.96	26	136.607	
-Buyer1:	285.16	26.5226	63.63	
-Buyer2:	133.798	155.369	63	
-Buyer3:	96	26.26	215.633	
+Buyer0:	68	
+Buyer1:	615.163	
 
 
-Market prices: 	152.98	26.2609	100.118	
-Winbuyers: 	2	3	1	
-Winbuyers' orginal bids: 	133.798	26.26	63.63	
-Winbuyers' bids: 	96.96	26	63.63	
-Winbuyers' profits: 	163.135	171.868	147.626	
-Sellers' profits: 	725.281	293.37	573.316	
+Market prices: 	341.582	
+Winbuyers: 	0	
+Winbuyers' orginal bids: 	68	
+Winbuyers' bids: 	68	
+Winbuyers' profits: 	959.488	
+Sellers' profits: 	1411.95	
 
 The bidding factors after updated:
-Buyer0:	1.0201	1.01	2.19004	
-Buyer1:	3.00013	1.0303	1	
-Buyer2:	1	6.03548	1.01	
-Buyer3:	1.01	1	3.45698	
+Buyer0:	1	
+Buyer1:	10.4035	
 
