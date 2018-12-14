@@ -224,7 +224,6 @@ void Auction::outputAfterSimulation(std::ofstream & outputfile, int *order)
 	for (int k = 0; k < NUMBER_SELLERS; k++) {
 		thisAuction = order[k];
 		outputfile << winBuyer[thisAuction] << "	";
-		if (winBuyer[thisAuction] == 0) outputfile << "!!!!!!!!!!!!!!!!!!!!!!1" << std::endl;
 	}
 
 	outputfile << std::endl << "Winbuyers' orginal bids: " << "	";
