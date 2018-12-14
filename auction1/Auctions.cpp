@@ -131,12 +131,15 @@ void Auction::LCAuction(std::ofstream &outputfile, int *order, int round)
 
 void Auction::initFactors()
 {
-	this->buyers[0].increaseFactor = 1.05;
-	this->buyers[0].decreaseFactor = 0.93;
+	/*this->buyers[0].increaseFactor = 1.05;
+	this->buyers[0].decreaseFactor = 0.93;*/
 
-	for (int n = 1; n < NUMBER_BUYERS; n++) {
-		this->buyers[n].decreaseFactor = this->buyers[n - 1].decreaseFactor- 0.03;
-		this->buyers[n].increaseFactor = this->buyers[n - 1].increaseFactor + 0.07;
+	for (int n = 0; n < NUMBER_BUYERS; n++) {
+		/*this->buyers[n].decreaseFactor = this->buyers[n - 1].decreaseFactor- 0.03;
+		this->buyers[n].increaseFactor = this->buyers[n - 1].increaseFactor + 0.07;*/
+
+		this->buyers[n].decreaseFactor = 0.9;
+		this->buyers[n].increaseFactor = 1.1;
 	}
 }
 
@@ -268,6 +271,7 @@ void Auction::outputAfterSimulation(std::ofstream & outputfile, int *order)
 	}
 	if (win_After)
 		outputfile << std::endl << "The profit of seller " << balaba << " changed to " << sellers[balaba].getProfit();
+	
 	outputfile << std::endl << std::endl;
 }
 

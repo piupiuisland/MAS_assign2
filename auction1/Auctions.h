@@ -7,9 +7,9 @@
 #include <fstream>
 #include <algorithm>
 
-#define NUMBER_ITEMS 2
-#define NUMBER_SELLERS 3
-#define NUMBER_BUYERS 4 // Attention: Number of buyers should larger than number of sellers!
+#define NUMBER_ITEMS 5
+#define NUMBER_SELLERS 8
+#define NUMBER_BUYERS 100 // Attention: Number of buyers should larger than number of sellers!
 #define NUMBER_ROUND 5
 #define EPSILON 0.08 // a penalty factor
 #define SMAX 100 // universal maximum starting price
