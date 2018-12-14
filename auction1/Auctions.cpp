@@ -224,6 +224,7 @@ void Auction::outputAfterSimulation(std::ofstream & outputfile, int *order)
 	for (int k = 0; k < NUMBER_SELLERS; k++) {
 		thisAuction = order[k];
 		outputfile << winBuyer[thisAuction] << "	";
+		if (winBuyer[thisAuction] == 0) outputfile << "!!!!!!!!!!!!!!!!!!!!!!1" << std::endl;
 	}
 
 	outputfile << std::endl << "Winbuyers' orginal bids: " << "	";
@@ -250,7 +251,6 @@ void Auction::outputAfterSimulation(std::ofstream & outputfile, int *order)
 		else outputfile << buyers[winBuyer[thisAuction]].getProfit() << "	";
 		winAfter = false;
 	}
-	//outputfile << std::endl << "Other buyers' profits didn't change.";
 
 	outputfile << std::endl << "Sellers' profits: " << "	";
 	for (int k = 0; k < NUMBER_SELLERS; k++) {
@@ -364,9 +364,9 @@ void Auction::getWinner(int k, int *order, bool pure, int round)
 double Auction::maxBid(int n, int k, int round)
 {
 	int winSerial;
-	for (int k = 0; k < NUMBER_SELLERS; k++) {
-		if (buyers[n].win[round][k] == true) {
-			winSerial = k;
+	for (int kk = 0; kk < NUMBER_SELLERS; kk++) {
+		if (buyers[n].win[round][kk] == true) {
+			winSerial = kk;
 		}
 	}
 	

@@ -8,7 +8,7 @@
 #include <algorithm>
 
 #define NUMBER_ITEMS 5
-#define NUMBER_SELLERS 8
+#define NUMBER_SELLERS 99
 #define NUMBER_BUYERS 100 // Attention: Number of buyers should larger than number of sellers!
 #define NUMBER_ROUND 5
 #define EPSILON 0.08 // a penalty factor
