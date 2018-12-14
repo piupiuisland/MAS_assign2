@@ -89,7 +89,7 @@ void Auction::LCAuction(std::ofstream &outputfile, int *order, int round)
 		sum = 0.;
 		// get the sum of all the buyers' bid depending whether this buyer has won before
 		for (int n = 0; n < NUMBER_BUYERS; n++) {
-			if (winBefore(n, round, thisAuction)) {
+			if (winBefore(n, round, order, k)) {
 				sum += maxBid(n, thisAuction, round);
 				buyers[n].bid[thisAuction] = maxBid(n, thisAuction, round);
 			}
@@ -105,7 +105,7 @@ void Auction::LCAuction(std::ofstream &outputfile, int *order, int round)
 		
 		// if the winner has win in previous auctions, the he need to pay the penalty
 		int previousAuction;
-		if (winBefore(winBuyer[thisAuction], round,thisAuction)) {
+		if (winBefore(winBuyer[thisAuction], round, order, k)) {
 			for (int kk = 0; kk < k; kk++) {
 				if (buyers[winBuyer[thisAuction]].win[round][order[kk]] == true) previousAuction = order[kk];
 			}
@@ -377,12 +377,14 @@ double Auction::maxBid(int n, int k, int round)
 	else return max;
 }
 
-bool Auction::winBefore(int n, int round, int thisAuction) // if buyer "n" has won in previous auctions
+bool Auction::winBefore(int n, int round, int *order, int k) // if buyer "n" has won in previous auctions
 {
 	bool buyerWin = false;
-	for (int k = 0; k < NUMBER_SELLERS; k++)
-		if (k != thisAuction)
-			if (buyers[n].win[round][k] == true) buyerWin = true;
+	int thisAuction;
+	for (int kk = 0; kk < k; kk++) {
+		thisAuction = order[kk];
+		if (buyers[n].win[round][thisAuction] == true) buyerWin = true;
+	}
 	if (buyerWin) return true;
 	else return false;
 }

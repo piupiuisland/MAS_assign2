@@ -83,7 +83,7 @@ public:
 	void outputBid(std::ofstream &outputfile, int *order);
 	void getWinner(int k, int *order, bool pure, int round);
 	double maxBid(int n, int k, int round);
-	bool winBefore(int n, int round, int thisAuction);
+	bool winBefore(int n, int round, int *order, int k);
 
 public:
 	std::vector <Buyer> buyers;
