@@ -475,6 +475,32 @@ void PureAuction::simulation()
 	// each seller sets a starting price for their items
 	Auction.setStartingPrice(outputfile);
 
+	//// output pureAuction initial bidding factors
+	std::ofstream PureInitBidFactor;
+	PureInitBidFactor.open("Pure_init_biddingfactor.txt");
+	if (PureInitBidFactor.fail()) {
+		perror("Pure_init_biddingfactor.txt");
+	}
+	for (int n = 0; n < NUMBER_BUYERS; n++) {
+		for (int k = 0; k < NUMBER_SELLERS; k++) {
+			PureInitBidFactor << Auction.buyers[n].biddingFactor[k] << "	";
+		}
+		PureInitBidFactor << std::endl;
+	}
+	PureInitBidFactor.close();
+
+	//output seller/buyer profits
+	std::ofstream PureSeller;
+	std::ofstream PureBuyer;
+	PureSeller.open("Pure_seller_profit.txt");
+	if (PureSeller.fail()) {
+		perror("Pure_seller_profit.txt");
+	}
+	PureBuyer.open("Pure_buyer_profit.txt");
+	if (PureBuyer.fail()) {
+		perror("Pure_buyer_profit.txt");
+	}////
+
 	for (int r = 0; r < NUMBER_ROUND; r++) {
 		outputfile << "----------------------- Round " << r+1 << " -----------------------" << std::endl;
 
@@ -485,8 +511,20 @@ void PureAuction::simulation()
 		// Calculate the "pure" auctions
 		Auction.pureAuction(outputfile, order, r);
 
+		//// output sellers and buyers's profit
+		for (int k = 0; k < NUMBER_SELLERS; k++) {
+			PureSeller << Auction.sellers[k].getProfit() << "	";
+		}
+		for (int n = 0; n < NUMBER_BUYERS; n++) {
+			PureBuyer << Auction.buyers[n].getProfit() << "	";
+		}
+		PureSeller << std::endl;
+		PureBuyer << std::endl;
+		////
+
 		// update bidding factors after each round
 		Auction.updateBiddingFactor(outputfile, order, r);
+
 	}
 
 	outputfile << std::endl << "*************************** Final Results ***************************";
@@ -501,6 +539,8 @@ void PureAuction::simulation()
 	}
 	outputfile << std::endl;
 	outputfile.close();
+	PureSeller.close();////
+	PureBuyer.close();////
 }
 
 void LCAuction::simulation()
@@ -520,12 +560,52 @@ void LCAuction::simulation()
 	
 	Auction.initBiddingFactors(outputfile);
 	Auction.setStartingPrice(outputfile);
+
+	//// output LCAuction initial bidding factors
+	std::ofstream LCInitBidFactors;
+	LCInitBidFactors.open("LC_init_biddingfactor.txt");
+	if (LCInitBidFactors.fail()) {
+		perror("LC_init_biddingfactor.txt");
+	}
+	for (int n = 0; n < NUMBER_BUYERS; n++) {
+		for (int k = 0; k < NUMBER_SELLERS; k++) {
+			LCInitBidFactors << Auction.buyers[n].biddingFactor[k] << "	";
+		}
+		LCInitBidFactors << std::endl;
+	}
+	LCInitBidFactors.close();
+
+	//output seller/buyer profits
+	std::ofstream LCSeller;
+	std::ofstream LCBuyer;
+	LCSeller.open("LC_seller_profit.txt");
+	if (LCSeller.fail()) {
+		perror("LC_seller_profit.txt");
+	}
+	LCBuyer.open("LC_buyer_profit.txt");
+	if (LCBuyer.fail()) {
+		perror("LC_buyer_profit.txt");
+	}
+	////
+
 	for (int r = 0; r < NUMBER_ROUND; r++) {
 		outputfile << "----------------------- Round " << r+1 << " -----------------------" << std::endl;
 
 		Auction.setOrder(outputfile, order);
 		Auction.updateBid(outputfile, order);
 		Auction.LCAuction(outputfile, order, r);
+
+		//// output sellers and buyers's profit
+		for (int k = 0; k < NUMBER_SELLERS; k++) {
+			LCSeller << Auction.sellers[k].getProfit() << "	";
+		}
+		for (int n = 0; n < NUMBER_BUYERS; n++) {
+			LCBuyer << Auction.buyers[n].getProfit() << "	";
+		}
+		LCSeller << std::endl;
+		LCBuyer << std::endl;
+		////
+
 		Auction.updateBiddingFactor(outputfile, order, r);
 	}
 
@@ -541,4 +621,6 @@ void LCAuction::simulation()
 	}
 
 	outputfile.close();
+	LCSeller.close();////
+	LCBuyer.close();////
 }
