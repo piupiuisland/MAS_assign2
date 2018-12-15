@@ -153,7 +153,7 @@ void Auction::initBiddingFactors(std::ofstream &outputfile)
 		outputfile << "Buyer" << n << ":	";
 		for (int k = 0; k < NUMBER_SELLERS; k++) {
 			scope = (SMAX - this->sellers[k].item.getStartingPrice());
-			this->buyers[n].biddingFactor[k] = 1 + (UP_BOUNDERT - 1)*rand() / double(RAND_MAX); // random factors between (a, UP_BOUNDERT)
+			this->buyers[n].biddingFactor[k] = 1 + (UP_BOUNDART - 1)*rand() / double(RAND_MAX); // random factors between (a, UP_BOUNDERT)
 			
 			outputfile << this->buyers[n].biddingFactor[k] << "	";
 		}
@@ -193,6 +193,7 @@ void Auction::outputBeforeSimulation(std::ofstream &outputfile)
 	outputfile << "NUMBER_BUYERS: " << NUMBER_BUYERS << "	";
 	outputfile << "NUMBER_ROUND: " << NUMBER_ROUND << "	";
 	outputfile << "Penalty factor: " << EPSILON << "	";
+	outputfile << "UP_BOUNDART: " << UP_BOUNDART << "	";
 	outputfile << "SMAX: " << SMAX << "	" << std::endl << std::endl;
 	outputfile << "Bid decrease factor for each buyer: ";
 	for (int n = 0; n < NUMBER_BUYERS; n++) {
