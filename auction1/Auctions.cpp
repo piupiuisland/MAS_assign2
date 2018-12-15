@@ -211,7 +211,7 @@ void Auction::outputBeforeSimulation(std::ofstream &outputfile)
 
 void Auction::outputAfterSimulation(std::ofstream & outputfile, int *order)
 {
-	int thisAuction, thisAuctionkk, balaba;
+	int thisAuction, thisAuctionkk, winSerial;
 	bool winAfter = false;
 	bool win_After = false;
 	outputBid(outputfile, order);
@@ -244,6 +244,8 @@ void Auction::outputAfterSimulation(std::ofstream & outputfile, int *order)
 	for (int k = 0; k < NUMBER_SELLERS; k++) {
 		thisAuction = order[k];
 		
+		// if this win buyer has win twice, then output the precious profit in the first time
+		// and output the current profit for the second time
 		for (int kk = k + 1; kk < NUMBER_SELLERS; kk++) {
 			thisAuctionkk = order[kk];
 			if (winBuyer[thisAuction] == winBuyer[thisAuctionkk]) winAfter = true;
@@ -257,21 +259,20 @@ void Auction::outputAfterSimulation(std::ofstream & outputfile, int *order)
 	for (int k = 0; k < NUMBER_SELLERS; k++) {
 		thisAuction = order[k];
 
-
 		for (int kk = k + 1; kk < NUMBER_SELLERS; kk++) {
 			thisAuctionkk = order[kk];
 			if (winBuyer[thisAuction] == winBuyer[thisAuctionkk]) winAfter = true;
 		}
 		if (winAfter) {
 			outputfile << sellers[thisAuction].getPreviousProfit() << "	";
-			balaba = thisAuction;
+			winSerial = thisAuction;
 			win_After = true;
 		}
 		else outputfile << sellers[thisAuction].getProfit() << "	";
 		winAfter = false;
 	}
 	if (win_After)
-		outputfile << std::endl << "The profit of seller " << balaba << " changed to " << sellers[balaba].getProfit();
+		outputfile << std::endl << "The profit of seller " << winSerial << " changed to " << sellers[winSerial].getProfit();
 	
 	outputfile << std::endl << std::endl;
 }
