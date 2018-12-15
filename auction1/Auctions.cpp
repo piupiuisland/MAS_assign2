@@ -147,13 +147,14 @@ void Auction::initBiddingFactors(std::ofstream &outputfile)
 {
 	double scope; 
 	outputfile << "Initial bidding factors:" << std::endl;
-	
+
+	//srand((unsigned)time(NULL));
 	outputfile << std::endl;
 	for (int n = 0; n < NUMBER_BUYERS; n++) {
 		outputfile << "Buyer" << n << ":	";
 		for (int k = 0; k < NUMBER_SELLERS; k++) {
 			scope = (SMAX - this->sellers[k].item.getStartingPrice());
-			this->buyers[n].biddingFactor[k] = 1 + (UP_BOUNDART - 1)*rand() / double(RAND_MAX); // random factors between (a, UP_BOUNDERT)
+			this->buyers[n].biddingFactor[k] = 1 + (UP_BOUNDART - 1)*rand() / double(RAND_MAX); // random factors between (1, UP_BOUNDERT)
 			
 			outputfile << this->buyers[n].biddingFactor[k] << "	";
 		}
