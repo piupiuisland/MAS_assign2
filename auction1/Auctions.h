@@ -57,7 +57,6 @@ public:
 	double getPreviousProfit();
 public:
 	Item item; // the item this seller will sell in every round
-	
 private:
 	double profit = 0.;
 	double previousProfit = 0.; // The profit this seller will get if his items was returned
@@ -68,7 +67,6 @@ class Auction
 {
 public:
 	Auction();
-
 	void assignItem(std::ofstream &outputfile);
 	void setStartingPrice(std::ofstream &outputfile);
 	void setOrder(std::ofstream &outputfile, int *order);

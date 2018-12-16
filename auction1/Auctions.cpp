@@ -51,7 +51,6 @@ void Auction::setOrder(std::ofstream &outputfile, int *order)
 	outputfile << "The order of the seller in this round is:	";
 	for (int i = 0; i < NUMBER_SELLERS; ++i) outputfile << order[i] << "	";
 	outputfile << std::endl << std::endl;
-
 }
 
 void Auction::pureAuction(std::ofstream &outputfile, int *order, int round)
