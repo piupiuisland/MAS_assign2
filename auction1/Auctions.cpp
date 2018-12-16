@@ -258,22 +258,9 @@ void Auction::outputAfterSimulation(std::ofstream & outputfile, int *order)
 	outputfile << std::endl << "Sellers' profits: " << "	";
 	for (int k = 0; k < NUMBER_SELLERS; k++) {
 		thisAuction = order[k];
-
-		for (int kk = k + 1; kk < NUMBER_SELLERS; kk++) {
-			thisAuctionkk = order[kk];
-			if (winBuyer[thisAuction] == winBuyer[thisAuctionkk]) winAfter = true;
-		}
-		if (winAfter) {
-			outputfile << sellers[thisAuction].getPreviousProfit() << "	";
-			winSerial = thisAuction;
-			win_After = true;
-		}
-		else outputfile << sellers[thisAuction].getProfit() << "	";
-		winAfter = false;
+		outputfile << sellers[thisAuction].getProfit() << "	";
 	}
-	if (win_After)
-		outputfile << std::endl << "The profit of seller " << winSerial << " changed to " << sellers[winSerial].getProfit();
-	
+
 	outputfile << std::endl << std::endl;
 }
 

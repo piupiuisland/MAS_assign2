@@ -59,8 +59,7 @@ Winbuyers: 	6	4	2	6	1	6
 Winbuyers' orginal bids: 	1039.03	930.557	309.556	137.209	127.096	521.592	
 Winbuyers' bids: 	993.221	211.209	209.348	127.375	108.628	452.724	
 Winbuyers' profits: 	85.8992	820.251	172.072	85.8992	21.1996	48.5327	
-Sellers' profits: 	993.221	211.209	209.348	0	108.628	452.724	
-The profit of seller 1 changed to 10.19
+Sellers' profits: 	79.4577	211.209	209.348	10.19	108.628	452.724	
 
 The bidding factors after updated:
 Buyer0:	11.3807	14.8377	4.6317	16.8074	8.32223	21.7908	
@@ -101,8 +100,7 @@ Winbuyers: 	4	1	4	0	7	5
 Winbuyers' orginal bids: 	837.501	114.386	365.968	1092.54	140.112	497.996	
 Winbuyers' bids: 	226.235	105.447	278.6	935.13	97.2051	469.433	
 Winbuyers' profits: 	1696.49	63.4258	952.336	225.926	72.6906	184.202	
-Sellers' profits: 	437.444	214.075	487.948	1014.59	107.395	922.156	
-The profit of seller 4 changed to 229.308
+Sellers' profits: 	229.308	214.075	487.948	1014.59	107.395	922.156	
 
 The bidding factors after updated:
 Buyer0:	16.3215	9.15445	5.09487	10.2426	18.4881	23.9699	
@@ -143,8 +141,7 @@ Winbuyers: 	6	6	4	2	7	6
 Winbuyers' orginal bids: 	115.991	516.376	753.751	306.46	126.101	1028.64	
 Winbuyers' bids: 	109.853	448.197	248.858	173.226	106.926	983.289	
 Winbuyers' profits: 	69.1686	69.1686	1895.26	486.729	165.618	270.448	
-Sellers' profits: 	323.928	922.156	478.166	661.174	214.321	1997.88	
-The profit of seller 0 changed to 958.012
+Sellers' profits: 	222.863	958.012	478.166	661.174	214.321	1997.88	
 
 The bidding factors after updated:
 Buyer0:	10.0699	26.3669	17.9537	5.60436	20.3369	11.2668	
@@ -185,8 +182,7 @@ Winbuyers: 	2	5	0	7	4	4
 Winbuyers' orginal bids: 	275.814	493.016	1081.62	113.491	160.2	678.376	
 Winbuyers' bids: 	190.548	464.738	925.779	72.8857	126.102	308.372	
 Winbuyers' profits: 	770.301	463.575	649.264	311.246	1980.04	2873.24	
-Sellers' profits: 	851.722	1422.75	2923.66	287.206	348.965	786.538	
-The profit of seller 2 changed to 232.951
+Sellers' profits: 	851.722	1422.75	2923.66	287.206	232.951	786.538	
 
 The bidding factors after updated:
 Buyer0:	6.1648	29.0035	10.1402	22.3706	11.0769	19.749	
@@ -227,8 +223,7 @@ Winbuyers: 	6	2	6	5	5	4
 Winbuyers' orginal bids: 	511.212	248.233	1018.36	207.424	129.38	610.538	
 Winbuyers' bids: 	443.715	209.603	973.456	144.18	102.142	608.1	
 Winbuyers' profits: 	632.931	1075.34	718.484	544.692	611.276	3727.81	
-Sellers' profits: 	1866.47	1061.33	3897.11	377.131	389.348	1394.64	
-The profit of seller 2 changed to 244.486
+Sellers' profits: 	1458.25	1061.33	3897.11	244.486	389.348	1394.64	
 
 The bidding factors after updated:
 Buyer0:	31.9039	6.78128	11.1542	12.1846	24.6077	21.7239	
